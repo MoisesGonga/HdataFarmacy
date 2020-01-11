@@ -1,0 +1,26 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:BiblioTec">
+
+    <SolidColorBrush x:Key="HomeBackground" Color="#F0F0F7"/>
+    <SolidColorBrush x:Key="PrimaryGreenColor" Color="#1EBBB3"/>
+    <SolidColorBrush x:Key="SucessColor" Color="#2ECC71"/>
+    <SolidColorBrush x:Key="InfoColor" Color="#3B86FF"/>
+    <SolidColorBrush x:Key="DangerColor" Color="#F93E3E"/>
+    <SolidColorBrush x:Key="solidPrimaryGreenColor" Color="#17958F"/>
+    <SolidColorBrush x:Key="SecondGreenColor" Color="#2ECC71"/>
+    <SolidColorBrush x:Key="BlueColor" Color="#26B2FB"/>
+    <SolidColorBrush x:Key="RedColor" Color="#F93E3E"/>
+    <SolidColorBrush x:Key="GrayColor1" Color="#4D4F5C"/> 
+    <SolidColorBrush x:Key="GrayColor2" Color="#707070"/>
+    <SolidColorBrush x:Key="GrayColor3" Color="#1C1C1C"/>
+    <SolidColorBrush x:Key="GrayColor4" Color="#A1A0AE"/>
+    
+    <SolidColorBrush x:Key="DefaultBackground" Color="#FDFDFD"/>
+
+    <SolidColorBrush x:Key="LightGreen_User_Circle" Color="#3ACA96"/>
+
+    <SolidColorBrush x:Key="BorderBrush_Color" Color="#FFE0E8F1"/>
+
+
+</ResourceDictionary>

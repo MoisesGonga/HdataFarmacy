@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{261B4C80-7467-42FF-83D4-8A25B56D725C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DAL</RootNamespace>
+    <AssemblyName>DAL</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework6.Npgsql, Version=3.1.1.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework6.Npgsql.3.1.1\lib\net45\EntityFramework6.Npgsql.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Npgsql, Version=3.1.8.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Npgsql.3.1.8\lib\net451\Npgsql.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.0\lib\netstandard1.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.3.0\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="HDATAContextSingleton.cs" />
+    <Compile Include="HDATA_PHARMACY_MODEL.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HDATA_PHARMACY_MODEL.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HDATA_PHARMACY_MODEL.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HDATA_PHARMACY_MODEL.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="IRepositoryEntity\IApresentacaoProdutoRepository.cs" />
+    <Compile Include="IRepositoryEntity\ICaixaRepository.cs" />
+    <Compile Include="IRepositoryEntity\ICategoriaProdutoRepository.cs" />
+    <Compile Include="IRepositoryEntity\ICustoRepository.cs" />
+    <Compile Include="IRepositoryEntity\IElementosPromocaoRepository.cs" />
+    <Compile Include="IRepositoryEntity\IEstoqueProdutoRepository.cs" />
+    <Compile Include="IRepositoryEntity\IFormaPagamentoRepository.cs" />
+    <Compile Include="IRepositoryEntity\IFornecedorRepository.cs" />
+    <Compile Include="IRepositoryEntity\IItemReservaRepository.cs" />
+    <Compile Include="IRepositoryEntity\IItemVendaRepository.cs" />
+    <Compile Include="IRepositoryEntity\ILocalEstoqueRepository.cs" />
+    <Compile Include="IRepositoryEntity\ILogRepository.cs" />
+    <Compile Include="IRepositoryEntity\ILoteRepository.cs" />
+    <Compile Include="IRepositoryEntity\IMovimentoCaixaRepository.cs" />
+    <Compile Include="IRepositoryEntity\IMovimentoEstoqueRepository.cs" />
+    <Compile Include="IRepositoryEntity\IPermissaoRepository.cs" />
+    <Compile Include="IRepositoryEntity\IProdutoRepository.cs" />
+    <Compile Include="IRepositoryEntity\IReservaRepository.cs" />
+    <Compile Include="IRepositoryEntity\ITipoCustoRepository.cs" />
+    <Compile Include="IRepositoryEntity\ITipoProdutoRepository.cs" />
+    <Compile Include="IRepositoryEntity\IDisciplinaEstoqueRepository.cs" />
+    <Compile Include="IRepositoryEntity\ITipoLogRepository.cs" />
+    <Compile Include="IRepositoryEntity\ITipoMovimentoRepository.cs" />
+    <Compile Include="IRepositoryEntity\ITipoReservaRepository.cs" />
+    <Compile Include="IRepositoryEntity\ITipoUnidadeRepository.cs" />
+    <Compile Include="IRepositoryEntity\IUtilizadorRepository.cs" />
+    <Compile Include="IRepositoryEntity\IVendaFormaPagamentoRepository.cs" />
+    <Compile Include="IRepositoryEntity\IVendaRepository .cs" />
+    <Compile Include="IRepositoryEntity\ITipoDocVendaRepository.cs" />
+    <Compile Include="IRepositoryEntity\ICondicaoPagamentoRepository.cs" />
+    <Compile Include="IRepositoryEntity\IClienteRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RepositoryEntity\ApresentacaoProdutoRepository.cs" />
+    <Compile Include="RepositoryEntity\CaixaRepository.cs" />
+    <Compile Include="RepositoryEntity\CategoriaProdutoRepository.cs" />
+    <Compile Include="RepositoryEntity\CustoRepository.cs" />
+    <Compile Include="RepositoryEntity\ElementosPromocaoRepository.cs" />
+    <Compile Include="RepositoryEntity\EstoqueProdutoRepository.cs" />
+    <Compile Include="RepositoryEntity\FormaPagamentoRepository.cs" />
+    <Compile Include="RepositoryEntity\FornecedorRepository.cs" />
+    <Compile Include="RepositoryEntity\ItemReservaRepository.cs" />
+    <Compile Include="RepositoryEntity\ItemVendaRepository.cs" />
+    <Compile Include="RepositoryEntity\LocalEstoqueRepository.cs" />
+    <Compile Include="RepositoryEntity\LogRepository.cs" />
+    <Compile Include="RepositoryEntity\MovimentoCaixaRepository.cs" />
+    <Compile Include="RepositoryEntity\MovimentoEstoqueRepository.cs" />
+    <Compile Include="RepositoryEntity\PermissaoRepository.cs" />
+    <Compile Include="RepositoryEntity\ProdutoRepository.cs" />
+    <Compile Include="RepositoryEntity\LoteRepository.cs" />
+    <Compile Include="RepositoryEntity\DisciplinaEstoqueRepository.cs" />
+    <Compile Include="RepositoryEntity\TipoProdutoRepository.cs" />
+    <Compile Include="RepositoryEntity\TipoMovimentoRepository.cs" />
+    <Compile Include="RepositoryEntity\TipoUnidadeRepository.cs" />
+    <Compile Include="RepositoryEntity\UtilizadorRepository.cs" />
+    <Compile Include="RepositoryEntity\VendaRepository.cs" />
+    <Compile Include="RepositoryEntity\TipoDocVendaRepository.cs" />
+    <Compile Include="RepositoryEntity\CondicaoPagamentoRepository.cs" />
+    <Compile Include="RepositoryEntity\ClienteRepository.cs" />
+    <Compile Include="Repository\IRepository.cs" />
+    <Compile Include="Repository\Repository.cs" />
+    <Compile Include="Repository\Transaction.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="HDATA_PHARMACY_MODEL.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>HDATA_PHARMACY_MODEL.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="HDATA_PHARMACY_MODEL.edmx.diagram">
+      <DependentUpon>HDATA_PHARMACY_MODEL.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{9A998CFB-24CB-4AF9-9637-B763C89B9BAC}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="HDATA_PHARMACY_MODEL.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HDATA_PHARMACY_MODEL.edmx</DependentUpon>
+      <LastGenOutput>HDATA_PHARMACY_MODEL.Context.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

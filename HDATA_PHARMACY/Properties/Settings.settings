@@ -1,0 +1,9 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="HDATA_PHARMACY.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="MessageTitleMessageBox" Type="System.String" Scope="User">
+      <Value Profile="(Default)">HDATA PHARMACY</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

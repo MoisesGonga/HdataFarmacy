@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5f9d68ac6194484094b3be49b33a99c4" Name="Diagram1">
+        <EntityTypeShape EntityType="HDATA_PHARMACY_MODEL.apresentacao_produto" Width="1.5" PointX="3" PointY="26.125" />
+        <EntityTypeShape EntityType="HDATA_PHARMACY_MODEL.caixa" Width="1.5" PointX="3" PointY="15.875" />
+        <EntityTypeShape EntityType="HDATA_PHARMACY_MODEL.categoria_produto" Width="1.5" PointX="0.75" PointY="32.25" />
+        <EntityTypeShape EntityType="HDATA_PHARMACY_MODEL.cliente" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="HDATA_PHARMACY_MODEL.condicao_pagamento" Width="1.5" PointX="3" PointY="13" />
+        <EntityTypeShape EntityType="HDATA_PHARMACY_MODEL.custo" Width="1.5" PointX="4" PointY="20" />
+        <EntityTypeShape EntityType="HDATA_PHARMACY_MODEL.disciplina_estoque" Width="1.5" PointX="0.75" PointY="40" />
+        <EntityTypeShape EntityType="HDATA_PHARMACY_MODEL.elementos_promocao" Width="1.5" PointX="7.5" PointY="32.75" />
+        <EntityTypeShape EntityType="HDATA_PHARMACY_MODEL.estoque_produto" Width="1.5" PointX="7.5" PointY="24.25" />
+        <EntityTypeShape EntityType="HDATA_PHARMACY_MODEL.forma_pagamento" Width="1.5" PointX="8.25" PointY="8.375" />
+        <EntityTypeShape EntityType="HDATA_PHARMACY_MODEL.fornecedor" Width="1.5" PointX="3" PointY="28.5" />
+        <EntityTypeShape EntityType="HDATA_PHARMACY_MODEL.item_reserva" Width="1.5" PointX="8.25" PointY="0.75" />
+        <EntityTypeShape EntityType="HDATA_PHARMACY_MODEL.item_venda" Width="1.5" PointX="7.5" PointY="4.875" />
+        <EntityTypeShape EntityType="HDATA_PHARMACY_MODEL.local_estoque" Width="1.5" PointX="5.25" PointY="25" />
+        <EntityTypeShape EntityType="HDATA_PHARMACY_MODEL.log" Width="1.5" PointX="6" PointY="12.25" />
+        <EntityTypeShape EntityType="HDATA_PHARMACY_MODEL.lote" Width="1.5" PointX="5.25" PointY="31.375" />
+        <EntityTypeShape EntityType="HDATA_PHARMACY_MODEL.movimento_caixa" Width="1.5" PointX="5.25" PointY="16.125" />
+        <EntityTypeShape EntityType="HDATA_PHARMACY_MODEL.movimento_estoque" Width="1.5" PointX="9.75" PointY="19.75" />
+        <EntityTypeShape EntityType="HDATA_PHARMACY_MODEL.permissao" Width="1.5" PointX="1.5" PointY="23.75" />
+        <EntityTypeShape EntityType="HDATA_PHARMACY_MODEL.produto" Width="1.5" PointX="3" PointY="35" />
+        <EntityTypeShape EntityType="HDATA_PHARMACY_MODEL.promocao" Width="1.5" PointX="5.25" PointY="37.75" />
+        <EntityTypeShape EntityType="HDATA_PHARMACY_MODEL.reserva" Width="1.5" PointX="3" PointY="4.5" />
+        <EntityTypeShape EntityType="HDATA_PHARMACY_MODEL.tipo_custo" Width="1.5" PointX="1.75" PointY="43.75" />
+        <EntityTypeShape EntityType="HDATA_PHARMACY_MODEL.tipo_doc_venda" Width="1.5" PointX="3" PointY="10.25" />
+        <EntityTypeShape EntityType="HDATA_PHARMACY_MODEL.tipo_log" Width="1.5" PointX="3.75" PointY="0.75" />
+        <EntityTypeShape EntityType="HDATA_PHARMACY_MODEL.tipo_movimento" Width="1.5" PointX="3" PointY="40.625" />
+        <EntityTypeShape EntityType="HDATA_PHARMACY_MODEL.tipo_produto" Width="1.5" PointX="0.75" PointY="37.625" />
+        <EntityTypeShape EntityType="HDATA_PHARMACY_MODEL.tipo_reserva" Width="1.5" PointX="0.75" PointY="1.25" />
+        <EntityTypeShape EntityType="HDATA_PHARMACY_MODEL.tipo_unidade" Width="1.5" PointX="0.75" PointY="35.125" />
+        <EntityTypeShape EntityType="HDATA_PHARMACY_MODEL.tipo_utilizador" Width="1.5" PointX="1.5" PointY="20.625" />
+        <EntityTypeShape EntityType="HDATA_PHARMACY_MODEL.utilizador" Width="1.5" PointX="0.75" PointY="15.5" />
+        <EntityTypeShape EntityType="HDATA_PHARMACY_MODEL.venda" Width="1.5" PointX="5.25" PointY="3.375" />
+        <EntityTypeShape EntityType="HDATA_PHARMACY_MODEL.venda_forma_pagamento" Width="1.5" PointX="10.5" PointY="5.125" />
+        <AssociationConnector Association="HDATA_PHARMACY_MODEL.Refapresentacao_produto15" />
+        <AssociationConnector Association="HDATA_PHARMACY_MODEL.Refcaixa38" />
+        <AssociationConnector Association="HDATA_PHARMACY_MODEL.Refcaixa7" />
+        <AssociationConnector Association="HDATA_PHARMACY_MODEL.Refutilizador53" />
+        <AssociationConnector Association="HDATA_PHARMACY_MODEL.Refcategoria_produto21" />
+        <AssociationConnector Association="HDATA_PHARMACY_MODEL.Refcliente23" />
+        <AssociationConnector Association="HDATA_PHARMACY_MODEL.Refcliente42" />
+        <AssociationConnector Association="HDATA_PHARMACY_MODEL.Refcondicao_pagamento18" />
+        <AssociationConnector Association="HDATA_PHARMACY_MODEL.Reftipo_custo20" />
+        <AssociationConnector Association="HDATA_PHARMACY_MODEL.Refutilizador3" />
+        <AssociationConnector Association="HDATA_PHARMACY_MODEL.Refdisciplina_estoque51" />
+        <AssociationConnector Association="HDATA_PHARMACY_MODEL.Reflote37" />
+        <AssociationConnector Association="HDATA_PHARMACY_MODEL.Refpromocao36" />
+        <AssociationConnector Association="HDATA_PHARMACY_MODEL.Refestoque_produto32" />
+        <AssociationConnector Association="HDATA_PHARMACY_MODEL.Reflocal_estoque13" />
+        <AssociationConnector Association="HDATA_PHARMACY_MODEL.Reflote14" />
+        <AssociationConnector Association="HDATA_PHARMACY_MODEL.Refutilizador25" />
+        <AssociationConnector Association="HDATA_PHARMACY_MODEL.Refforma_pagamento17" />
+        <AssociationConnector Association="HDATA_PHARMACY_MODEL.Reffornecedor11" />
+        <AssociationConnector Association="HDATA_PHARMACY_MODEL.Reflote39" />
+        <AssociationConnector Association="HDATA_PHARMACY_MODEL.Refreserva40" />
+        <AssociationConnector Association="HDATA_PHARMACY_MODEL.Reflote12" />
+        <AssociationConnector Association="HDATA_PHARMACY_MODEL.Refvenda22" />
+        <AssociationConnector Association="HDATA_PHARMACY_MODEL.Reftipo_log4" />
+        <AssociationConnector Association="HDATA_PHARMACY_MODEL.Refutilizador5" />
+        <AssociationConnector Association="HDATA_PHARMACY_MODEL.Refproduto10" />
+        <AssociationConnector Association="HDATA_PHARMACY_MODEL.Reftipo_movimento8" />
+        <AssociationConnector Association="HDATA_PHARMACY_MODEL.Reftipo_movimento31" />
+        <AssociationConnector Association="HDATA_PHARMACY_MODEL.Refutilizador33" />
+        <AssociationConnector Association="HDATA_PHARMACY_MODEL.Reftipo_produto52" />
+        <AssociationConnector Association="HDATA_PHARMACY_MODEL.Reftipo_unidade50" />
+        <AssociationConnector Association="HDATA_PHARMACY_MODEL.Reftipo_reserva49" />
+        <AssociationConnector Association="HDATA_PHARMACY_MODEL.Refutilizador44" />
+        <AssociationConnector Association="HDATA_PHARMACY_MODEL.Reftipo_doc_venda9" />
+        <AssociationConnector Association="HDATA_PHARMACY_MODEL.Reftipo_utilizador19" />
+        <AssociationConnector Association="HDATA_PHARMACY_MODEL.Refutilizador24" />
+        <AssociationConnector Association="HDATA_PHARMACY_MODEL.Refvenda16" />
+        <AssociationConnector Association="HDATA_PHARMACY_MODEL.permissao_tipo_utilizador" />
+        <AssociationConnector Association="HDATA_PHARMACY_MODEL.venda_reserva" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

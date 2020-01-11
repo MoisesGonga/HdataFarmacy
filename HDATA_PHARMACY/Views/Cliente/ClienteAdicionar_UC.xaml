@@ -1,0 +1,207 @@
+﻿<UserControl x:Class="HDATA_PHARMACY.Views.Cliente.ClienteAdicionar_UC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HDATA_PHARMACY.Views.Cliente"
+             mc:Ignorable="d"  xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"   
+            xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+               xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+             
+               xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/charts" xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+              xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" 
+             
+             
+              TextElement.FontFamily="{DynamicResource PoppinsRegular}"      
+            TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+            TextElement.FontWeight="Regular"
+            TextElement.FontSize="13"
+            TextOptions.TextFormattingMode="Ideal"
+            TextOptions.TextRenderingMode="Auto"
+             Background="{DynamicResource DefaultBackground}" 
+          FontFamily="Poppins" d:DesignHeight="674">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="196"/>
+            <RowDefinition Height="143"/>
+            <RowDefinition Height="225"/>
+        </Grid.RowDefinitions>
+        <TextBlock  FontFamily="Poppins" Foreground="White" FontSize="{DynamicResource FontSizeLarge}" Margin="10,0,0,9"><Run Foreground="#FF4D4F5C" Text="CLIENTE &gt; ADICIONAR"/></TextBlock>
+
+        <StackPanel Margin="0,0,0,10" Orientation="Horizontal" HorizontalAlignment="Right">
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" >
+                <Button Padding="0" x:Name="btn_novo" FontFamily="Poppins" Width="100" Background="{StaticResource BlueColor}" BorderThickness="0" Foreground="White" Margin="0,9">
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                        <materialDesign:PackIcon
+                            Width="20"
+                            Height="18"
+                            Margin="0 0 5 0"
+                            VerticalAlignment="Center"
+                            Foreground="White"
+                            Kind="Plus" />
+                        <TextBlock VerticalAlignment="Center"
+                            FontFamily="{StaticResource PoppinsRegular}"
+                            FontSize="{StaticResource FontSizeNormal}"
+                            Foreground="White"
+                            Text="Novo" />
+                    </StackPanel>
+                </Button>
+                <Button x:Name="btn_salvar" FontFamily="Poppins" Width="100" Background="{StaticResource SucessColor}" BorderThickness="0" Foreground="White" Margin="10 0 10 0" Click="btn_salvar_Click">
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                        <materialDesign:PackIcon
+                            Width="20"
+                            Height="18"
+                            Margin="0 0 5 0"
+                            VerticalAlignment="Center"
+                            Foreground="White"
+                            Kind="ContentSave" />
+                        <TextBlock VerticalAlignment="Center"
+                            FontFamily="{StaticResource PoppinsRegular}"
+                            FontSize="{StaticResource FontSizeNormal}"
+                            Foreground="White"
+                            Text="Salvar" />
+                    </StackPanel>
+                </Button>
+                <Button Padding="0" FontFamily="Poppins" Width="100" Background="{StaticResource DangerColor}" BorderThickness="0" Foreground="White"  Margin="0 0 20 0">
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                        <materialDesign:PackIcon
+                            Width="20"
+                            Height="18"
+                            Margin="0 0 5 0"
+                            VerticalAlignment="Center"
+                            Foreground="White"
+                            Kind="Cancel" />
+                        <TextBlock VerticalAlignment="Center"
+                            FontFamily="{StaticResource PoppinsRegular}"
+                            FontSize="{StaticResource FontSizeNormal}"
+                            Foreground="White"
+                            Text="Cancelar" />
+                    </StackPanel>
+
+                </Button>
+            </StackPanel>
+
+        </StackPanel>
+
+
+
+
+        <StackPanel HorizontalAlignment="Left"  Margin="10,0,20,0" Grid.Row="1" VerticalAlignment="Top"  Orientation="Vertical" Grid.RowSpan="3" Width="Auto"  >
+
+            <!--elementos do id-->
+            <StackPanel HorizontalAlignment="Left"  Margin="0,0,0,0"  VerticalAlignment="Center"  Orientation="Horizontal" Height="50"  >
+                <StackPanel HorizontalAlignment="Left"   Margin="10,0,0,0"  VerticalAlignment="Bottom" Width="200">
+                    <Label x:Name="labdel" Content="ID Cliente" FontSize="{DynamicResource FontSizeNormal}" />
+                </StackPanel>
+
+                <StackPanel HorizontalAlignment="Left" Height="50"   Margin="10,0,0,0" Grid.Row="1" Grid.RowSpan="1" VerticalAlignment="Top" Width="400">
+                    <TextBox  x:Name="TxtIdCliente" materialDesign:HintAssist.Hint="Código do Cliente"
+                     materialDesign:TransitionAssist.DisableTransitions="True" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                     FontFamily="Poppins" Height="48" />
+
+                </StackPanel>
+            </StackPanel>
+
+            <!--elementos da descricao-->
+            <StackPanel HorizontalAlignment="Left"  Margin="0,0,0,0"  VerticalAlignment="Center"  Orientation="Horizontal" Height="50"  >
+                <StackPanel HorizontalAlignment="Left"   Margin="10,0,0,0"  VerticalAlignment="Bottom" Width="200">
+                    <Label x:Name="label" Content="Nome" FontSize="{DynamicResource FontSizeNormal}" />
+                </StackPanel>
+
+                <StackPanel HorizontalAlignment="Left" Height="50"   Margin="10,0,0,0" Grid.Row="1" Grid.RowSpan="1" VerticalAlignment="Top" Width="400">
+                    <TextBox  x:Name="TxtNome" materialDesign:HintAssist.Hint="Descrição da Saida"
+                     materialDesign:TransitionAssist.DisableTransitions="True" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                     FontFamily="Poppins" Height="48" />
+
+                </StackPanel>
+            </StackPanel>
+
+
+
+
+            <!--elementos da nome-->
+            <StackPanel HorizontalAlignment="Left"  Margin="0,5,0,5"  VerticalAlignment="Center"  Orientation="Horizontal" Height="50"  >
+                <StackPanel HorizontalAlignment="Left" Height="36"   Margin="10,0,0,0"  VerticalAlignment="Bottom" Width="200">
+                    <Label x:Name="label1" Content="Endereço" FontSize="{DynamicResource FontSizeNormal}" />
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left" Height="50"   Margin="10,0,0,0" Grid.Row="1" Grid.RowSpan="1" VerticalAlignment="Top" Width="400">
+                    <TextBox  x:Name="TxtEndereco" materialDesign:HintAssist.Hint="Endereço actual"
+                     materialDesign:TransitionAssist.DisableTransitions="True" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                     FontFamily="Poppins" Height="48" />
+                </StackPanel>
+            </StackPanel>
+
+
+            <!--elementos da Data-->
+            <StackPanel HorizontalAlignment="Left"  Margin="0,5,0,5"  VerticalAlignment="Top"  Orientation="Horizontal" Height="50"  >
+                <StackPanel HorizontalAlignment="Left"  Height="36"   Margin="10,0,0,0"  VerticalAlignment="Bottom" Width="200">
+                    <Label x:Name="label11" Content="Telefone" FontSize="{DynamicResource FontSizeNormal}" />
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left"  Height="50"   Margin="10,0,0,0" Grid.Row="1" Grid.RowSpan="1" VerticalAlignment="Top" Width="400">
+
+                    <TextBox  x:Name="TxtTelefone" materialDesign:HintAssist.Hint="Ex: 3000"
+                     materialDesign:TransitionAssist.DisableTransitions="True" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                     FontFamily="Poppins" Height="48" />
+
+                </StackPanel>
+            </StackPanel>
+
+            <!--elementos da Razão-->
+            <StackPanel HorizontalAlignment="Left"  Margin="0,5,0,5"  VerticalAlignment="Top"  Orientation="Horizontal" Height="50"  >
+                <StackPanel HorizontalAlignment="Left"  Height="36"   Margin="10,0,0,0"  VerticalAlignment="Bottom" Width="200">
+                    <Label x:Name="label111" Content="BI / NIF" FontSize="{DynamicResource FontSizeNormal}" />
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left"  Height="50"   Margin="10,0,0,0" Grid.Row="1" Grid.RowSpan="1" VerticalAlignment="Top" Width="400">
+
+                    <TextBox  x:Name="TxtBI" materialDesign:HintAssist.Hint="Númeto de Contribuinte ou  Bilhete de Identidade"
+                     materialDesign:TransitionAssist.DisableTransitions="True" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                     FontFamily="Poppins" Height="48"  />
+
+                </StackPanel>
+            </StackPanel>
+
+            <!--elementos da Tipo-->
+            <StackPanel HorizontalAlignment="Left"  Margin="0,5,0,5"  VerticalAlignment="Top"  Orientation="Horizontal" Height="50"  >
+                <StackPanel HorizontalAlignment="Left"  Height="36"   Margin="10,0,0,0"  VerticalAlignment="Bottom" Width="200">
+                    <Label x:Name="label11111" Content="Email" FontSize="{DynamicResource FontSizeNormal}" />
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left"  Height="50"   Margin="10,0,0,0" Grid.Row="1" Grid.RowSpan="1" VerticalAlignment="Top" Width="400">
+
+
+                    <TextBox  x:Name="TxtEmail" materialDesign:HintAssist.Hint="nome@dominio.com"
+                     materialDesign:TransitionAssist.DisableTransitions="True" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                     FontFamily="Poppins" Height="48" />
+
+
+                </StackPanel>
+            </StackPanel>
+
+            <!--elementos da notas-->
+            <StackPanel HorizontalAlignment="Left"  Margin="0,5,0,5"  VerticalAlignment="Top"  Orientation="Horizontal" Height="50"  >
+                <StackPanel HorizontalAlignment="Left"  Height="36"   Margin="10,0,0,0"  VerticalAlignment="Bottom" Width="200">
+                    <Label x:Name="label1111" Content="Detalhes" FontSize="{DynamicResource FontSizeNormal}" />
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left"  Height="50"   Margin="10,0,0,0" Grid.Row="1" Grid.RowSpan="1" VerticalAlignment="Top" Width="400">
+
+                    <TextBox  x:Name="PhoneTextBox1111" materialDesign:HintAssist.Hint=""
+                     materialDesign:TransitionAssist.DisableTransitions="True" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                     FontFamily="Poppins" Height="48"  />
+
+                </StackPanel>
+            </StackPanel>
+
+           
+
+
+
+
+
+
+
+        </StackPanel>
+    </Grid>
+</UserControl>

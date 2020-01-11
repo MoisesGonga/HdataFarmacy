@@ -1,0 +1,182 @@
+﻿<UserControl x:Class="HDATA_PHARMACY.Views.Estoque.EstoqueDashboard_UC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HDATA_PHARMACY.Views.Estoque"
+             mc:Ignorable="d" 
+             
+              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"   
+            xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+               xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+             
+               xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/charts" xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+              xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" 
+             
+             
+              TextElement.FontFamily="{DynamicResource PoppinsRegular}"      
+            TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+            TextElement.FontWeight="Regular"
+            TextElement.FontSize="13"
+            TextOptions.TextFormattingMode="Ideal"
+            TextOptions.TextRenderingMode="Auto"
+             Background="{DynamicResource DefaultBackground}" 
+          FontFamily="Poppins" d:DesignHeight="674">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="38.667"/>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="242"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="225"/>
+        </Grid.RowDefinitions>
+        <TextBlock  FontFamily="Poppins" Foreground="White" FontSize="{DynamicResource FontSizeLarge}" Margin="10,0,737,10"><Run Foreground="#FF4D4F5C" Text="ESTOQUE"/></TextBlock>
+
+        <Grid Margin="0,8"  Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="346"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+
+
+
+            <lvc:PieChart LegendLocation="Right"  HorizontalAlignment="left" DataClick="Chart_OnDataClick" Hoverable="True" DataTooltip="{x:Null}" Margin="0" Width="279" Grid.Column="0">
+                <lvc:PieChart.Series>
+                    <lvc:PieSeries Title="Maria" Values="3" DataLabels="True"
+        					LabelPoint="{Binding PointLabel}"/>
+                    <lvc:PieSeries Title="Charles" Values="4" DataLabels="True" 
+        					LabelPoint="{Binding PointLabel}"/>
+                    <lvc:PieSeries Title="Frida" Values="6" DataLabels="True" 
+        					LabelPoint="{Binding PointLabel}"/>
+                    <lvc:PieSeries Title="Frederic" Values="2" DataLabels="True" 
+        					LabelPoint="{Binding PointLabel}"/>
+                </lvc:PieChart.Series>
+            </lvc:PieChart>
+            <lvc:CartesianChart Series="{Binding SeriesCollection}" Margin="10,0,0,0" LegendLocation="Right" Grid.Column="1"  />
+
+        </Grid>
+
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Width="225" Margin="0,0,0,174" Grid.RowSpan="2">
+
+            <Button Margin="15 0 0 0"    
+				Width="30"
+				BorderThickness="0"
+				Height="30" Foreground="{StaticResource ResourceKey=GrayColor1}"
+				Background="{StaticResource DefaultBackground}"
+				Content="{materialDesign:PackIcon CirclesAdd}"
+				Cursor="Hand"
+				Padding="0"
+				ToolTip="Adicionar Produto" Click="Button_Click"/>
+            <Button Margin="15,2,0,3"    
+				Width="30"
+				BorderThickness="0"
+				Height="30" Foreground="{StaticResource ResourceKey=GrayColor1}"
+				Background="{StaticResource DefaultBackground}"
+				Content="{materialDesign:PackIcon Pencil}"
+				Cursor="Hand"
+				Padding="0"
+				ToolTip="Editar Produto"/>
+            <Button Margin="15,2,0,3"    
+				Width="30"
+				BorderThickness="0"
+				Height="30" Foreground="{StaticResource ResourceKey=GrayColor1}"
+				Background="{StaticResource DefaultBackground}"
+				Content="{materialDesign:PackIcon Kind=Trash}"
+				Cursor="Hand"
+				Padding="0"
+				ToolTip="Eliminar Produto"/>
+
+            <Button       Margin="15 0 0 0"               
+				Width="30"
+				BorderThickness="0"
+				Height="30" Foreground="{StaticResource ResourceKey=GrayColor1}"
+				Background="{StaticResource DefaultBackground}"
+				Content="{materialDesign:PackIcon Kind=Export}"
+				Cursor="Hand"
+				Padding="0"
+				ToolTip="Exportar dados consultados"/>
+            <Button   Margin="15 0 0 0"                   
+				Width="30"
+				BorderThickness="0"
+				Height="30" Foreground="{StaticResource ResourceKey=GrayColor1}"
+				Background="{StaticResource DefaultBackground}"
+				Content="{materialDesign:PackIcon Kind=Printer}"
+				Cursor="Hand"
+				Padding="0"
+				ToolTip="Imprimir dados consultados"/>
+        </StackPanel>
+        <Grid Grid.Row="4" Margin="0,0,0,-230">
+            <StackPanel Margin="0,38,0,0"/>
+           <!-- <dxg:GridControl AutoGenerateColumns="None" Margin="0,55,0,0">
+                <dxg:GridControl.View>
+                    <dxg:TableView ShowAutoFilterRow="True" AllowPerPixelScrolling="True" ShowTotalSummary="False" Margin="0,0,0,8"/>
+                </dxg:GridControl.View>
+                <dxg:GridColumn AllowEditing="False" Width="*" Header="Código"/>
+                <dxg:GridColumn AllowEditing="False" Width="*" Header="Descrição"/>
+                <dxg:GridColumn AllowEditing="False" Header="Valor"/>
+                <dxg:GridColumn AllowEditing="False" Header="Data"/>
+                <dxg:GridColumn AllowEditing="False" Header="Responsável"/>
+
+            </dxg:GridControl>-->
+        </Grid>
+        <StackPanel Margin="0,-1,0,10" Orientation="Horizontal" HorizontalAlignment="Right" Grid.RowSpan="2"/>
+
+        <WrapPanel HorizontalAlignment="Stretch" Margin="5,11,5,0" Orientation="Horizontal" Grid.Row="1" Width="960">
+            <materialDesign:Card Margin="10 0 10 0" materialDesign:ShadowAssist.ShadowDepth="Depth1" materialDesign:ShadowAssist.ShadowEdges="Bottom"  Padding="15" FontFamily="Poppins" Height="120" Width="300">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="3*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="53*"/>
+                        <ColumnDefinition Width="37*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock FontSize="22" Grid.ColumnSpan="2" VerticalAlignment="Center" FontFamily="Poppins" Foreground="{StaticResource GrayColor4}" Text="Unidades"/>
+                    <Image Grid.Row="1" Grid.Column="1" Source="/HDATA_PHARMACY;component/Images/Bar Chart@2x - 01.png" />
+                    <TextBlock Grid.Row="1" VerticalAlignment="Center" FontSize="{StaticResource FontSizeNumberDashboard}" FontFamily="Poppins" Foreground="{StaticResource GrayColor3}" Text="2453"/>
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card Margin="10 0 10 0" materialDesign:ShadowAssist.ShadowDepth="Depth1" materialDesign:ShadowAssist.ShadowEdges="Bottom"  Padding="15" FontFamily="Poppins" Height="120" Width="300">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="3*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="53*"/>
+                        <ColumnDefinition Width="37*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock FontSize="22" Grid.ColumnSpan="2" VerticalAlignment="Center" FontFamily="Poppins" Foreground="{StaticResource GrayColor4}" Text="Valor do Estoque"/>
+                    <Image Grid.Row="1" Grid.Column="1" Source="/HDATA_PHARMACY;component/Images/Bar Chart@2x - 02.png" />
+                    <TextBlock Grid.Row="1" VerticalAlignment="Center" FontSize="{StaticResource FontSizeNumberDashboard}" FontFamily="Poppins" Foreground="{StaticResource GrayColor3}" Text="2453"/>
+                </Grid>
+            </materialDesign:Card>
+
+
+            <materialDesign:Card Margin="10 0 10 0" materialDesign:ShadowAssist.ShadowDepth="Depth1" materialDesign:ShadowAssist.ShadowEdges="Bottom"  Padding="15" FontFamily="Poppins" Height="120" Width="300">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="3*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="53*"/>
+                        <ColumnDefinition Width="37*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock FontSize="22" Grid.ColumnSpan="2" VerticalAlignment="Center" FontFamily="Poppins" Foreground="{StaticResource GrayColor4}" Text="Custo do Estoque"/>
+                    <Image Grid.Row="1" Grid.Column="1" Source="/HDATA_PHARMACY;component/Images/Bar Chart@2x - 03.png" />
+                    <TextBlock Grid.Row="1" VerticalAlignment="Center" FontSize="{StaticResource FontSizeNumberDashboard}" FontFamily="Poppins" Foreground="{StaticResource GrayColor3}" Text="2453"/>
+                </Grid>
+            </materialDesign:Card>
+
+        </WrapPanel>
+    </Grid>
+
+</UserControl>

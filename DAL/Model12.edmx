@@ -1,0 +1,2510 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="db_hdata_pharmacyModel1.Store" Provider="Npgsql" ProviderManifestToken="9.5.4" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="apresentacao_produto">
+          <Key>
+            <PropertyRef Name="id_apresentacao_produto" />
+          </Key>
+          <Property Name="id_apresentacao_produto" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="caixa">
+          <Key>
+            <PropertyRef Name="id_caixa" />
+          </Key>
+          <Property Name="id_caixa" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="data_criacao" Type="timestamp" Nullable="false" />
+          <Property Name="data_fecho" Type="timestamp" />
+          <Property Name="valor_inicial" Type="float4" Nullable="false" />
+          <Property Name="valor_actual" Type="float4" Nullable="false" />
+          <Property Name="id_user" Type="int4" Nullable="false" />
+          <Property Name="saldo" Type="float4" />
+          <Property Name="estado_caixa" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="categoria_produto">
+          <Key>
+            <PropertyRef Name="id_categoria" />
+          </Key>
+          <Property Name="id_categoria" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="designacao" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="notas" Type="text" />
+          <Property Name="taxa_iva" Type="float4" />
+        </EntityType>
+        <EntityType Name="cliente">
+          <Key>
+            <PropertyRef Name="id_cliente" />
+          </Key>
+          <Property Name="id_cliente" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="bi" Type="varchar" MaxLength="50" />
+          <Property Name="telefone" Type="varchar" MaxLength="15" />
+          <Property Name="email" Type="varchar" MaxLength="255" />
+          <Property Name="endereco" Type="varchar" MaxLength="255" />
+          <Property Name="data_cadastro" Type="timestamp" />
+        </EntityType>
+        <EntityType Name="condicao_pagamento">
+          <Key>
+            <PropertyRef Name="id_condicao_pagamento" />
+          </Key>
+          <Property Name="id_condicao_pagamento" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="qtd_dia" Type="int4" />
+        </EntityType>
+        <EntityType Name="custo">
+          <Key>
+            <PropertyRef Name="id_custo" />
+          </Key>
+          <Property Name="id_custo" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descricao" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="data_gasto" Type="timestamp" Nullable="false" />
+          <Property Name="valor" Type="float4" Nullable="false" />
+          <Property Name="razao" Type="varchar" MaxLength="255" />
+          <Property Name="notas" Type="text" />
+          <Property Name="status" Type="int4" />
+          <Property Name="id_tipo_custo" Type="int4" Nullable="false" />
+          <Property Name="id_user" Type="int4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="elementos_promocao">
+          <Key>
+            <PropertyRef Name="id_promocao" />
+            <PropertyRef Name="id_lote" />
+            <PropertyRef Name="id_produto" />
+          </Key>
+          <Property Name="id_promocao" Type="int4" Nullable="false" />
+          <Property Name="id_lote" Type="int4" Nullable="false" />
+          <Property Name="id_produto" Type="int4" Nullable="false" />
+          <Property Name="margem_venda" Type="bpchar" MaxLength="10" />
+          <Property Name="preco_venda" Type="bpchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="estoque_produto">
+          <Key>
+            <PropertyRef Name="id_local_estoque" />
+            <PropertyRef Name="id_lote" />
+            <PropertyRef Name="id_produto" />
+          </Key>
+          <Property Name="id_local_estoque" Type="int4" Nullable="false" />
+          <Property Name="id_lote" Type="int4" Nullable="false" />
+          <Property Name="id_produto" Type="int4" Nullable="false" />
+          <Property Name="qtd_encomenda" Type="int4" Nullable="false" />
+          <Property Name="qtd_existente" Type="int4" />
+          <Property Name="qtd_minima" Type="int4" Nullable="false" />
+          <Property Name="data_criacao" Type="timestamp" Nullable="false" />
+          <Property Name="preco_venda" Type="float4" Nullable="false" />
+          <Property Name="status" Type="int4" />
+          <Property Name="id_user" Type="int4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="forma_pagamento">
+          <Key>
+            <PropertyRef Name="id_forma_pagamento" />
+          </Key>
+          <Property Name="id_forma_pagamento" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="fornecedor">
+          <Key>
+            <PropertyRef Name="id_fornecedor" />
+          </Key>
+          <Property Name="id_fornecedor" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="nif" Type="varchar" MaxLength="50" />
+          <Property Name="endereco" Type="varchar" MaxLength="255" />
+          <Property Name="telefone" Type="varchar" MaxLength="15" />
+          <Property Name="email" Type="varchar" MaxLength="255" />
+          <Property Name="detalhe" Type="text" />
+          <Property Name="status" Type="int4" />
+          <Property Name="data_cadastro" Type="timestamp" />
+        </EntityType>
+        <EntityType Name="item_reserva">
+          <Key>
+            <PropertyRef Name="id_lote" />
+            <PropertyRef Name="id_produto" />
+            <PropertyRef Name="id_reserva" />
+          </Key>
+          <Property Name="id_lote" Type="int4" Nullable="false" />
+          <Property Name="id_produto" Type="int4" Nullable="false" />
+          <Property Name="id_reserva" Type="int4" Nullable="false" />
+          <Property Name="quant_reservada_mensal" Type="int4" Nullable="false" />
+          <Property Name="quant_levantada" Type="int4" Nullable="false" />
+          <Property Name="unid_levantamento" Type="int4" Nullable="false" />
+          <Property Name="status" Type="int4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="item_venda">
+          <Key>
+            <PropertyRef Name="id_venda" />
+            <PropertyRef Name="id_lote" />
+            <PropertyRef Name="id_produto" />
+          </Key>
+          <Property Name="id_venda" Type="int4" Nullable="false" />
+          <Property Name="id_lote" Type="int4" Nullable="false" />
+          <Property Name="id_produto" Type="int4" Nullable="false" />
+          <Property Name="qtd" Type="int4" Nullable="false" />
+          <Property Name="preco" Type="float4" Nullable="false" />
+          <Property Name="subtotal" Type="float4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="local_estoque">
+          <Key>
+            <PropertyRef Name="id_local_estoque" />
+          </Key>
+          <Property Name="id_local_estoque" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descricao" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="estado_local_estoque" Type="varchar" MaxLength="50" />
+          <Property Name="operacao" Type="varchar" MaxLength="50" />
+          <Property Name="endereco" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="logs">
+          <Key>
+            <PropertyRef Name="id_log" />
+          </Key>
+          <Property Name="id_log" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="titulo" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="data_logs" Type="timestamp" Nullable="false" />
+          <Property Name="descricao" Type="text" />
+          <Property Name="id_tipo_log" Type="int4" Nullable="false" />
+          <Property Name="id_user" Type="int4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="lote">
+          <Key>
+            <PropertyRef Name="id_lote" />
+            <PropertyRef Name="id_produto" />
+          </Key>
+          <Property Name="id_lote" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_produto" Type="int4" Nullable="false" />
+          <Property Name="descricao" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="data_validade" Type="timestamp" Nullable="false" />
+          <Property Name="info_lote" Type="varchar" MaxLength="50" />
+          <Property Name="codigo_barra" Type="varchar" MaxLength="50" />
+          <Property Name="referencia" Type="varchar" MaxLength="50" />
+          <Property Name="margem_venda" Type="float4" />
+          <Property Name="preco_venda" Type="float4" />
+          <Property Name="data_cadastro" Type="timestamp" />
+          <Property Name="data_alteracao" Type="timestamp" Nullable="false" />
+          <Property Name="id_fornecedor" Type="int4" Nullable="false" />
+          <Property Name="id_apresentacao_produto" Type="int4" Nullable="false" />
+          <Property Name="status" Type="int4" />
+        </EntityType>
+        <EntityType Name="movimento_caixa">
+          <Key>
+            <PropertyRef Name="id_movimento" />
+          </Key>
+          <Property Name="id_movimento" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descricao" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="notas" Type="text" />
+          <Property Name="data_movimento" Type="timestamp" Nullable="false" />
+          <Property Name="valor_movimento" Type="float4" Nullable="false" />
+          <Property Name="id_caixa" Type="int4" Nullable="false" />
+          <Property Name="id_tipo_movimento" Type="int4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="movimento_estoque">
+          <Key>
+            <PropertyRef Name="id_movimento_estoque" />
+          </Key>
+          <Property Name="id_movimento_estoque" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="data" Type="timestamp" />
+          <Property Name="data_compra" Type="timestamp" />
+          <Property Name="preco_compra" Type="float4" />
+          <Property Name="qtd" Type="int4" />
+          <Property Name="descricao" Type="text" />
+          <Property Name="ajuste" Type="int4" />
+          <Property Name="id_tipo_movimento" Type="int4" Nullable="false" />
+          <Property Name="id_local_estoque" Type="int4" Nullable="false" />
+          <Property Name="id_lote" Type="int4" Nullable="false" />
+          <Property Name="id_produto" Type="int4" Nullable="false" />
+          <Property Name="id_user" Type="int4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="permissao">
+          <Key>
+            <PropertyRef Name="id_permissao" />
+          </Key>
+          <Property Name="id_permissao" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descricao" Type="varchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="permissao tipo_utilizador">
+          <Key>
+            <PropertyRef Name="id_permissao" />
+            <PropertyRef Name="id_tipo_user" />
+          </Key>
+          <Property Name="id_permissao" Type="int4" Nullable="false" />
+          <Property Name="id_tipo_user" Type="int4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="produto">
+          <Key>
+            <PropertyRef Name="id_produto" />
+          </Key>
+          <Property Name="id_produto" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="codigo_barra" Type="varchar" MaxLength="15" />
+          <Property Name="descricao" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="data_alteracao" Type="timestamp" Nullable="false" />
+          <Property Name="tipo_produto" Type="varchar" MaxLength="100" />
+          <Property Name="id_categoria" Type="int4" Nullable="false" />
+          <Property Name="status" Type="int4" />
+          <Property Name="id_tipo_unidade" Type="int4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="promocao">
+          <Key>
+            <PropertyRef Name="id_promocao" />
+          </Key>
+          <Property Name="id_promocao" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="data_inicio" Type="timestamp" />
+          <Property Name="data_fim" Type="timestamp" />
+          <Property Name="nome" Type="varchar" MaxLength="250" />
+          <Property Name="status" Type="int4" />
+          <Property Name="descricao" Type="text" />
+        </EntityType>
+        <EntityType Name="reserva">
+          <Key>
+            <PropertyRef Name="id_reserva" />
+          </Key>
+          <Property Name="id_reserva" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_cliente" Type="int4" Nullable="false" />
+          <Property Name="id_user" Type="int4" Nullable="false" />
+          <Property Name="status" Type="int4" Nullable="false" />
+          <Property Name="data_inicio" Type="date" />
+          <Property Name="data_fim" Type="date" />
+          <Property Name="id_tipo_reserva" Type="int4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tipo_custo">
+          <Key>
+            <PropertyRef Name="id_tipo_custo" />
+          </Key>
+          <Property Name="id_tipo_custo" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descricao" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tipo_doc_venda">
+          <Key>
+            <PropertyRef Name="id_tipo_doc_venda" />
+          </Key>
+          <Property Name="id_tipo_doc_venda" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="num_doc" Type="int4" />
+          <Property Name="operacao" Type="int4" />
+        </EntityType>
+        <EntityType Name="tipo_log">
+          <Key>
+            <PropertyRef Name="id_tipo_log" />
+          </Key>
+          <Property Name="id_tipo_log" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descricao" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tipo_movimento">
+          <Key>
+            <PropertyRef Name="id_tipo_movimento" />
+          </Key>
+          <Property Name="id_tipo_movimento" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descricao" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="valor" Type="int4" />
+        </EntityType>
+        <EntityType Name="tipo_reserva">
+          <Key>
+            <PropertyRef Name="id_tipo_reserva" />
+          </Key>
+          <Property Name="id_tipo_reserva" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descricao" Type="varchar" MaxLength="50" />
+          <Property Name="multiplicador" Type="int4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tipo_unidade">
+          <Key>
+            <PropertyRef Name="id_tipo_unidade" />
+          </Key>
+          <Property Name="id_tipo_unidade" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descricao" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="abreviatura" Type="bpchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tipo_utilizador">
+          <Key>
+            <PropertyRef Name="id_tipo_user" />
+          </Key>
+          <Property Name="id_tipo_user" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descricao" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="notas" Type="text" />
+        </EntityType>
+        <EntityType Name="utilizador">
+          <Key>
+            <PropertyRef Name="id_user" />
+          </Key>
+          <Property Name="id_user" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="id_tipo_user" Type="int4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="venda">
+          <Key>
+            <PropertyRef Name="id_venda" />
+          </Key>
+          <Property Name="id_venda" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="data_venda" Type="timestamp" Nullable="false" />
+          <Property Name="descricao" Type="varchar" MaxLength="250" />
+          <Property Name="total_cobrar" Type="float4" Nullable="false" />
+          <Property Name="total_pago" Type="float4" Nullable="false" />
+          <Property Name="toco" Type="float4" Nullable="false" />
+          <Property Name="num_doc" Type="int4" />
+          <Property Name="data_alteracao" Type="timestamp" Nullable="false" />
+          <Property Name="id_cliente" Type="int4" Nullable="false" />
+          <Property Name="id_user" Type="int4" Nullable="false" />
+          <Property Name="id_tipo_documento" Type="int4" Nullable="false" />
+          <Property Name="notas" Type="text" />
+          <Property Name="id_condicao_pagamento" Type="int4" Nullable="false" />
+          <Property Name="id_caixa" Type="int4" Nullable="false" />
+          <Property Name="status" Type="int4" />
+        </EntityType>
+        <EntityType Name="venda_forma_pagamento">
+          <Key>
+            <PropertyRef Name="id_venda" />
+            <PropertyRef Name="id_forma_pagamento" />
+          </Key>
+          <Property Name="id_venda" Type="int4" Nullable="false" />
+          <Property Name="id_forma_pagamento" Type="int4" Nullable="false" />
+          <Property Name="valor_pago" Type="float4" />
+          <Property Name="referencia" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="venda_reserva">
+          <Key>
+            <PropertyRef Name="id_reserva" />
+            <PropertyRef Name="id_venda" />
+          </Key>
+          <Property Name="id_reserva" Type="int4" Nullable="false" />
+          <Property Name="id_venda" Type="int4" Nullable="false" />
+        </EntityType>
+        <Association Name="Refapresentacao_produto15">
+          <End Role="apresentacao_produto" Type="Self.apresentacao_produto" Multiplicity="1" />
+          <End Role="lote" Type="Self.lote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="apresentacao_produto">
+              <PropertyRef Name="id_apresentacao_produto" />
+            </Principal>
+            <Dependent Role="lote">
+              <PropertyRef Name="id_apresentacao_produto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Refcaixa38">
+          <End Role="caixa" Type="Self.caixa" Multiplicity="1" />
+          <End Role="venda" Type="Self.venda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="caixa">
+              <PropertyRef Name="id_caixa" />
+            </Principal>
+            <Dependent Role="venda">
+              <PropertyRef Name="id_caixa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Refcaixa7">
+          <End Role="caixa" Type="Self.caixa" Multiplicity="1" />
+          <End Role="movimento_caixa" Type="Self.movimento_caixa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="caixa">
+              <PropertyRef Name="id_caixa" />
+            </Principal>
+            <Dependent Role="movimento_caixa">
+              <PropertyRef Name="id_caixa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Refcategoria_produto21">
+          <End Role="categoria_produto" Type="Self.categoria_produto" Multiplicity="1" />
+          <End Role="produto" Type="Self.produto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categoria_produto">
+              <PropertyRef Name="id_categoria" />
+            </Principal>
+            <Dependent Role="produto">
+              <PropertyRef Name="id_categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Refcliente23">
+          <End Role="cliente" Type="Self.cliente" Multiplicity="1" />
+          <End Role="venda" Type="Self.venda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cliente">
+              <PropertyRef Name="id_cliente" />
+            </Principal>
+            <Dependent Role="venda">
+              <PropertyRef Name="id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Refcliente42">
+          <End Role="cliente" Type="Self.cliente" Multiplicity="1" />
+          <End Role="reserva" Type="Self.reserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cliente">
+              <PropertyRef Name="id_cliente" />
+            </Principal>
+            <Dependent Role="reserva">
+              <PropertyRef Name="id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Refcondicao_pagamento18">
+          <End Role="condicao_pagamento" Type="Self.condicao_pagamento" Multiplicity="1" />
+          <End Role="venda" Type="Self.venda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="condicao_pagamento">
+              <PropertyRef Name="id_condicao_pagamento" />
+            </Principal>
+            <Dependent Role="venda">
+              <PropertyRef Name="id_condicao_pagamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Refestoque_produto32">
+          <End Role="estoque_produto" Type="Self.estoque_produto" Multiplicity="1" />
+          <End Role="movimento_estoque" Type="Self.movimento_estoque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estoque_produto">
+              <PropertyRef Name="id_local_estoque" />
+              <PropertyRef Name="id_lote" />
+              <PropertyRef Name="id_produto" />
+            </Principal>
+            <Dependent Role="movimento_estoque">
+              <PropertyRef Name="id_local_estoque" />
+              <PropertyRef Name="id_lote" />
+              <PropertyRef Name="id_produto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Refforma_pagamento17">
+          <End Role="forma_pagamento" Type="Self.forma_pagamento" Multiplicity="1" />
+          <End Role="venda_forma_pagamento" Type="Self.venda_forma_pagamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="forma_pagamento">
+              <PropertyRef Name="id_forma_pagamento" />
+            </Principal>
+            <Dependent Role="venda_forma_pagamento">
+              <PropertyRef Name="id_forma_pagamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reffornecedor11">
+          <End Role="fornecedor" Type="Self.fornecedor" Multiplicity="1" />
+          <End Role="lote" Type="Self.lote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fornecedor">
+              <PropertyRef Name="id_fornecedor" />
+            </Principal>
+            <Dependent Role="lote">
+              <PropertyRef Name="id_fornecedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reflocal_estoque13">
+          <End Role="local_estoque" Type="Self.local_estoque" Multiplicity="1" />
+          <End Role="estoque_produto" Type="Self.estoque_produto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="local_estoque">
+              <PropertyRef Name="id_local_estoque" />
+            </Principal>
+            <Dependent Role="estoque_produto">
+              <PropertyRef Name="id_local_estoque" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reflote12">
+          <End Role="lote" Type="Self.lote" Multiplicity="1" />
+          <End Role="item_venda" Type="Self.item_venda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lote">
+              <PropertyRef Name="id_lote" />
+              <PropertyRef Name="id_produto" />
+            </Principal>
+            <Dependent Role="item_venda">
+              <PropertyRef Name="id_lote" />
+              <PropertyRef Name="id_produto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reflote14">
+          <End Role="lote" Type="Self.lote" Multiplicity="1" />
+          <End Role="estoque_produto" Type="Self.estoque_produto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lote">
+              <PropertyRef Name="id_lote" />
+              <PropertyRef Name="id_produto" />
+            </Principal>
+            <Dependent Role="estoque_produto">
+              <PropertyRef Name="id_lote" />
+              <PropertyRef Name="id_produto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reflote37">
+          <End Role="lote" Type="Self.lote" Multiplicity="1" />
+          <End Role="elementos_promocao" Type="Self.elementos_promocao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lote">
+              <PropertyRef Name="id_lote" />
+              <PropertyRef Name="id_produto" />
+            </Principal>
+            <Dependent Role="elementos_promocao">
+              <PropertyRef Name="id_lote" />
+              <PropertyRef Name="id_produto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reflote39">
+          <End Role="lote" Type="Self.lote" Multiplicity="1" />
+          <End Role="item_reserva" Type="Self.item_reserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lote">
+              <PropertyRef Name="id_lote" />
+              <PropertyRef Name="id_produto" />
+            </Principal>
+            <Dependent Role="item_reserva">
+              <PropertyRef Name="id_lote" />
+              <PropertyRef Name="id_produto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Refpermissao28">
+          <End Role="permissao" Type="Self.permissao" Multiplicity="1" />
+          <End Role="permissao tipo_utilizador" Type="Self.permissao tipo_utilizador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="permissao">
+              <PropertyRef Name="id_permissao" />
+            </Principal>
+            <Dependent Role="permissao tipo_utilizador">
+              <PropertyRef Name="id_permissao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Refproduto10">
+          <End Role="produto" Type="Self.produto" Multiplicity="1" />
+          <End Role="lote" Type="Self.lote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="produto">
+              <PropertyRef Name="id_produto" />
+            </Principal>
+            <Dependent Role="lote">
+              <PropertyRef Name="id_produto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Refpromocao36">
+          <End Role="promocao" Type="Self.promocao" Multiplicity="1" />
+          <End Role="elementos_promocao" Type="Self.elementos_promocao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="promocao">
+              <PropertyRef Name="id_promocao" />
+            </Principal>
+            <Dependent Role="elementos_promocao">
+              <PropertyRef Name="id_promocao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Refreserva40">
+          <End Role="reserva" Type="Self.reserva" Multiplicity="1" />
+          <End Role="item_reserva" Type="Self.item_reserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="reserva">
+              <PropertyRef Name="id_reserva" />
+            </Principal>
+            <Dependent Role="item_reserva">
+              <PropertyRef Name="id_reserva" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Refreserva47">
+          <End Role="reserva" Type="Self.reserva" Multiplicity="1" />
+          <End Role="venda_reserva" Type="Self.venda_reserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="reserva">
+              <PropertyRef Name="id_reserva" />
+            </Principal>
+            <Dependent Role="venda_reserva">
+              <PropertyRef Name="id_reserva" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reftipo_custo20">
+          <End Role="tipo_custo" Type="Self.tipo_custo" Multiplicity="1" />
+          <End Role="custo" Type="Self.custo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_custo">
+              <PropertyRef Name="id_tipo_custo" />
+            </Principal>
+            <Dependent Role="custo">
+              <PropertyRef Name="id_tipo_custo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reftipo_doc_venda9">
+          <End Role="tipo_doc_venda" Type="Self.tipo_doc_venda" Multiplicity="1" />
+          <End Role="venda" Type="Self.venda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_doc_venda">
+              <PropertyRef Name="id_tipo_doc_venda" />
+            </Principal>
+            <Dependent Role="venda">
+              <PropertyRef Name="id_tipo_documento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reftipo_log4">
+          <End Role="tipo_log" Type="Self.tipo_log" Multiplicity="1" />
+          <End Role="logs" Type="Self.logs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_log">
+              <PropertyRef Name="id_tipo_log" />
+            </Principal>
+            <Dependent Role="logs">
+              <PropertyRef Name="id_tipo_log" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reftipo_movimento31">
+          <End Role="tipo_movimento" Type="Self.tipo_movimento" Multiplicity="1" />
+          <End Role="movimento_estoque" Type="Self.movimento_estoque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_movimento">
+              <PropertyRef Name="id_tipo_movimento" />
+            </Principal>
+            <Dependent Role="movimento_estoque">
+              <PropertyRef Name="id_tipo_movimento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reftipo_movimento8">
+          <End Role="tipo_movimento" Type="Self.tipo_movimento" Multiplicity="1" />
+          <End Role="movimento_caixa" Type="Self.movimento_caixa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_movimento">
+              <PropertyRef Name="id_tipo_movimento" />
+            </Principal>
+            <Dependent Role="movimento_caixa">
+              <PropertyRef Name="id_tipo_movimento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reftipo_reserva49">
+          <End Role="tipo_reserva" Type="Self.tipo_reserva" Multiplicity="1" />
+          <End Role="reserva" Type="Self.reserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_reserva">
+              <PropertyRef Name="id_tipo_reserva" />
+            </Principal>
+            <Dependent Role="reserva">
+              <PropertyRef Name="id_tipo_reserva" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reftipo_unidade50">
+          <End Role="tipo_unidade" Type="Self.tipo_unidade" Multiplicity="1" />
+          <End Role="produto" Type="Self.produto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_unidade">
+              <PropertyRef Name="id_tipo_unidade" />
+            </Principal>
+            <Dependent Role="produto">
+              <PropertyRef Name="id_tipo_unidade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reftipo_utilizador19">
+          <End Role="tipo_utilizador" Type="Self.tipo_utilizador" Multiplicity="1" />
+          <End Role="utilizador" Type="Self.utilizador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_utilizador">
+              <PropertyRef Name="id_tipo_user" />
+            </Principal>
+            <Dependent Role="utilizador">
+              <PropertyRef Name="id_tipo_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reftipo_utilizador29">
+          <End Role="tipo_utilizador" Type="Self.tipo_utilizador" Multiplicity="1" />
+          <End Role="permissao tipo_utilizador" Type="Self.permissao tipo_utilizador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_utilizador">
+              <PropertyRef Name="id_tipo_user" />
+            </Principal>
+            <Dependent Role="permissao tipo_utilizador">
+              <PropertyRef Name="id_tipo_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Refutilizador24">
+          <End Role="utilizador" Type="Self.utilizador" Multiplicity="1" />
+          <End Role="venda" Type="Self.venda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utilizador">
+              <PropertyRef Name="id_user" />
+            </Principal>
+            <Dependent Role="venda">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Refutilizador25">
+          <End Role="utilizador" Type="Self.utilizador" Multiplicity="1" />
+          <End Role="estoque_produto" Type="Self.estoque_produto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utilizador">
+              <PropertyRef Name="id_user" />
+            </Principal>
+            <Dependent Role="estoque_produto">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Refutilizador3">
+          <End Role="utilizador" Type="Self.utilizador" Multiplicity="1" />
+          <End Role="custo" Type="Self.custo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utilizador">
+              <PropertyRef Name="id_user" />
+            </Principal>
+            <Dependent Role="custo">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Refutilizador33">
+          <End Role="utilizador" Type="Self.utilizador" Multiplicity="1" />
+          <End Role="movimento_estoque" Type="Self.movimento_estoque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utilizador">
+              <PropertyRef Name="id_user" />
+            </Principal>
+            <Dependent Role="movimento_estoque">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Refutilizador44">
+          <End Role="utilizador" Type="Self.utilizador" Multiplicity="1" />
+          <End Role="reserva" Type="Self.reserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utilizador">
+              <PropertyRef Name="id_user" />
+            </Principal>
+            <Dependent Role="reserva">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Refutilizador5">
+          <End Role="utilizador" Type="Self.utilizador" Multiplicity="1" />
+          <End Role="logs" Type="Self.logs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utilizador">
+              <PropertyRef Name="id_user" />
+            </Principal>
+            <Dependent Role="logs">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Refutilizador6">
+          <End Role="utilizador" Type="Self.utilizador" Multiplicity="1" />
+          <End Role="caixa" Type="Self.caixa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utilizador">
+              <PropertyRef Name="id_user" />
+            </Principal>
+            <Dependent Role="caixa">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Refvenda16">
+          <End Role="venda" Type="Self.venda" Multiplicity="1" />
+          <End Role="venda_forma_pagamento" Type="Self.venda_forma_pagamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="venda">
+              <PropertyRef Name="id_venda" />
+            </Principal>
+            <Dependent Role="venda_forma_pagamento">
+              <PropertyRef Name="id_venda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Refvenda22">
+          <End Role="venda" Type="Self.venda" Multiplicity="1" />
+          <End Role="item_venda" Type="Self.item_venda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="venda">
+              <PropertyRef Name="id_venda" />
+            </Principal>
+            <Dependent Role="item_venda">
+              <PropertyRef Name="id_venda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Refvenda48">
+          <End Role="venda" Type="Self.venda" Multiplicity="1" />
+          <End Role="venda_reserva" Type="Self.venda_reserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="venda">
+              <PropertyRef Name="id_venda" />
+            </Principal>
+            <Dependent Role="venda_reserva">
+              <PropertyRef Name="id_venda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="db_hdata_pharmacyModel1StoreContainer">
+          <EntitySet Name="apresentacao_produto" EntityType="Self.apresentacao_produto" Schema="public" store:Type="Tables" />
+          <EntitySet Name="caixa" EntityType="Self.caixa" Schema="public" store:Type="Tables" />
+          <EntitySet Name="categoria_produto" EntityType="Self.categoria_produto" Schema="public" store:Type="Tables" />
+          <EntitySet Name="cliente" EntityType="Self.cliente" Schema="public" store:Type="Tables" />
+          <EntitySet Name="condicao_pagamento" EntityType="Self.condicao_pagamento" Schema="public" store:Type="Tables" />
+          <EntitySet Name="custo" EntityType="Self.custo" Schema="public" store:Type="Tables" />
+          <EntitySet Name="elementos_promocao" EntityType="Self.elementos_promocao" Schema="public" store:Type="Tables" />
+          <EntitySet Name="estoque_produto" EntityType="Self.estoque_produto" Schema="public" store:Type="Tables" />
+          <EntitySet Name="forma_pagamento" EntityType="Self.forma_pagamento" Schema="public" store:Type="Tables" />
+          <EntitySet Name="fornecedor" EntityType="Self.fornecedor" Schema="public" store:Type="Tables" />
+          <EntitySet Name="item_reserva" EntityType="Self.item_reserva" Schema="public" store:Type="Tables" />
+          <EntitySet Name="item_venda" EntityType="Self.item_venda" Schema="public" store:Type="Tables" />
+          <EntitySet Name="local_estoque" EntityType="Self.local_estoque" Schema="public" store:Type="Tables" />
+          <EntitySet Name="logs" EntityType="Self.logs" Schema="public" store:Type="Tables" />
+          <EntitySet Name="lote" EntityType="Self.lote" Schema="public" store:Type="Tables" />
+          <EntitySet Name="movimento_caixa" EntityType="Self.movimento_caixa" Schema="public" store:Type="Tables" />
+          <EntitySet Name="movimento_estoque" EntityType="Self.movimento_estoque" Schema="public" store:Type="Tables" />
+          <EntitySet Name="permissao" EntityType="Self.permissao" Schema="public" store:Type="Tables" />
+          <EntitySet Name="permissao tipo_utilizador" EntityType="Self.permissao tipo_utilizador" Schema="public" store:Type="Tables" />
+          <EntitySet Name="produto" EntityType="Self.produto" Schema="public" store:Type="Tables" />
+          <EntitySet Name="promocao" EntityType="Self.promocao" Schema="public" store:Type="Tables" />
+          <EntitySet Name="reserva" EntityType="Self.reserva" Schema="public" store:Type="Tables" />
+          <EntitySet Name="tipo_custo" EntityType="Self.tipo_custo" Schema="public" store:Type="Tables" />
+          <EntitySet Name="tipo_doc_venda" EntityType="Self.tipo_doc_venda" Schema="public" store:Type="Tables" />
+          <EntitySet Name="tipo_log" EntityType="Self.tipo_log" Schema="public" store:Type="Tables" />
+          <EntitySet Name="tipo_movimento" EntityType="Self.tipo_movimento" Schema="public" store:Type="Tables" />
+          <EntitySet Name="tipo_reserva" EntityType="Self.tipo_reserva" Schema="public" store:Type="Tables" />
+          <EntitySet Name="tipo_unidade" EntityType="Self.tipo_unidade" Schema="public" store:Type="Tables" />
+          <EntitySet Name="tipo_utilizador" EntityType="Self.tipo_utilizador" Schema="public" store:Type="Tables" />
+          <EntitySet Name="utilizador" EntityType="Self.utilizador" Schema="public" store:Type="Tables" />
+          <EntitySet Name="venda" EntityType="Self.venda" Schema="public" store:Type="Tables" />
+          <EntitySet Name="venda_forma_pagamento" EntityType="Self.venda_forma_pagamento" Schema="public" store:Type="Tables" />
+          <EntitySet Name="venda_reserva" EntityType="Self.venda_reserva" Schema="public" store:Type="Tables" />
+          <AssociationSet Name="Refapresentacao_produto15" Association="Self.Refapresentacao_produto15">
+            <End Role="apresentacao_produto" EntitySet="apresentacao_produto" />
+            <End Role="lote" EntitySet="lote" />
+          </AssociationSet>
+          <AssociationSet Name="Refcaixa38" Association="Self.Refcaixa38">
+            <End Role="caixa" EntitySet="caixa" />
+            <End Role="venda" EntitySet="venda" />
+          </AssociationSet>
+          <AssociationSet Name="Refcaixa7" Association="Self.Refcaixa7">
+            <End Role="caixa" EntitySet="caixa" />
+            <End Role="movimento_caixa" EntitySet="movimento_caixa" />
+          </AssociationSet>
+          <AssociationSet Name="Refcategoria_produto21" Association="Self.Refcategoria_produto21">
+            <End Role="categoria_produto" EntitySet="categoria_produto" />
+            <End Role="produto" EntitySet="produto" />
+          </AssociationSet>
+          <AssociationSet Name="Refcliente23" Association="Self.Refcliente23">
+            <End Role="cliente" EntitySet="cliente" />
+            <End Role="venda" EntitySet="venda" />
+          </AssociationSet>
+          <AssociationSet Name="Refcliente42" Association="Self.Refcliente42">
+            <End Role="cliente" EntitySet="cliente" />
+            <End Role="reserva" EntitySet="reserva" />
+          </AssociationSet>
+          <AssociationSet Name="Refcondicao_pagamento18" Association="Self.Refcondicao_pagamento18">
+            <End Role="condicao_pagamento" EntitySet="condicao_pagamento" />
+            <End Role="venda" EntitySet="venda" />
+          </AssociationSet>
+          <AssociationSet Name="Refestoque_produto32" Association="Self.Refestoque_produto32">
+            <End Role="estoque_produto" EntitySet="estoque_produto" />
+            <End Role="movimento_estoque" EntitySet="movimento_estoque" />
+          </AssociationSet>
+          <AssociationSet Name="Refforma_pagamento17" Association="Self.Refforma_pagamento17">
+            <End Role="forma_pagamento" EntitySet="forma_pagamento" />
+            <End Role="venda_forma_pagamento" EntitySet="venda_forma_pagamento" />
+          </AssociationSet>
+          <AssociationSet Name="Reffornecedor11" Association="Self.Reffornecedor11">
+            <End Role="fornecedor" EntitySet="fornecedor" />
+            <End Role="lote" EntitySet="lote" />
+          </AssociationSet>
+          <AssociationSet Name="Reflocal_estoque13" Association="Self.Reflocal_estoque13">
+            <End Role="local_estoque" EntitySet="local_estoque" />
+            <End Role="estoque_produto" EntitySet="estoque_produto" />
+          </AssociationSet>
+          <AssociationSet Name="Reflote12" Association="Self.Reflote12">
+            <End Role="lote" EntitySet="lote" />
+            <End Role="item_venda" EntitySet="item_venda" />
+          </AssociationSet>
+          <AssociationSet Name="Reflote14" Association="Self.Reflote14">
+            <End Role="lote" EntitySet="lote" />
+            <End Role="estoque_produto" EntitySet="estoque_produto" />
+          </AssociationSet>
+          <AssociationSet Name="Reflote37" Association="Self.Reflote37">
+            <End Role="lote" EntitySet="lote" />
+            <End Role="elementos_promocao" EntitySet="elementos_promocao" />
+          </AssociationSet>
+          <AssociationSet Name="Reflote39" Association="Self.Reflote39">
+            <End Role="lote" EntitySet="lote" />
+            <End Role="item_reserva" EntitySet="item_reserva" />
+          </AssociationSet>
+          <AssociationSet Name="Refpermissao28" Association="Self.Refpermissao28">
+            <End Role="permissao" EntitySet="permissao" />
+            <End Role="permissao tipo_utilizador" EntitySet="permissao tipo_utilizador" />
+          </AssociationSet>
+          <AssociationSet Name="Refproduto10" Association="Self.Refproduto10">
+            <End Role="produto" EntitySet="produto" />
+            <End Role="lote" EntitySet="lote" />
+          </AssociationSet>
+          <AssociationSet Name="Refpromocao36" Association="Self.Refpromocao36">
+            <End Role="promocao" EntitySet="promocao" />
+            <End Role="elementos_promocao" EntitySet="elementos_promocao" />
+          </AssociationSet>
+          <AssociationSet Name="Refreserva40" Association="Self.Refreserva40">
+            <End Role="reserva" EntitySet="reserva" />
+            <End Role="item_reserva" EntitySet="item_reserva" />
+          </AssociationSet>
+          <AssociationSet Name="Refreserva47" Association="Self.Refreserva47">
+            <End Role="reserva" EntitySet="reserva" />
+            <End Role="venda_reserva" EntitySet="venda_reserva" />
+          </AssociationSet>
+          <AssociationSet Name="Reftipo_custo20" Association="Self.Reftipo_custo20">
+            <End Role="tipo_custo" EntitySet="tipo_custo" />
+            <End Role="custo" EntitySet="custo" />
+          </AssociationSet>
+          <AssociationSet Name="Reftipo_doc_venda9" Association="Self.Reftipo_doc_venda9">
+            <End Role="tipo_doc_venda" EntitySet="tipo_doc_venda" />
+            <End Role="venda" EntitySet="venda" />
+          </AssociationSet>
+          <AssociationSet Name="Reftipo_log4" Association="Self.Reftipo_log4">
+            <End Role="tipo_log" EntitySet="tipo_log" />
+            <End Role="logs" EntitySet="logs" />
+          </AssociationSet>
+          <AssociationSet Name="Reftipo_movimento31" Association="Self.Reftipo_movimento31">
+            <End Role="tipo_movimento" EntitySet="tipo_movimento" />
+            <End Role="movimento_estoque" EntitySet="movimento_estoque" />
+          </AssociationSet>
+          <AssociationSet Name="Reftipo_movimento8" Association="Self.Reftipo_movimento8">
+            <End Role="tipo_movimento" EntitySet="tipo_movimento" />
+            <End Role="movimento_caixa" EntitySet="movimento_caixa" />
+          </AssociationSet>
+          <AssociationSet Name="Reftipo_reserva49" Association="Self.Reftipo_reserva49">
+            <End Role="tipo_reserva" EntitySet="tipo_reserva" />
+            <End Role="reserva" EntitySet="reserva" />
+          </AssociationSet>
+          <AssociationSet Name="Reftipo_unidade50" Association="Self.Reftipo_unidade50">
+            <End Role="tipo_unidade" EntitySet="tipo_unidade" />
+            <End Role="produto" EntitySet="produto" />
+          </AssociationSet>
+          <AssociationSet Name="Reftipo_utilizador19" Association="Self.Reftipo_utilizador19">
+            <End Role="tipo_utilizador" EntitySet="tipo_utilizador" />
+            <End Role="utilizador" EntitySet="utilizador" />
+          </AssociationSet>
+          <AssociationSet Name="Reftipo_utilizador29" Association="Self.Reftipo_utilizador29">
+            <End Role="tipo_utilizador" EntitySet="tipo_utilizador" />
+            <End Role="permissao tipo_utilizador" EntitySet="permissao tipo_utilizador" />
+          </AssociationSet>
+          <AssociationSet Name="Refutilizador24" Association="Self.Refutilizador24">
+            <End Role="utilizador" EntitySet="utilizador" />
+            <End Role="venda" EntitySet="venda" />
+          </AssociationSet>
+          <AssociationSet Name="Refutilizador25" Association="Self.Refutilizador25">
+            <End Role="utilizador" EntitySet="utilizador" />
+            <End Role="estoque_produto" EntitySet="estoque_produto" />
+          </AssociationSet>
+          <AssociationSet Name="Refutilizador3" Association="Self.Refutilizador3">
+            <End Role="utilizador" EntitySet="utilizador" />
+            <End Role="custo" EntitySet="custo" />
+          </AssociationSet>
+          <AssociationSet Name="Refutilizador33" Association="Self.Refutilizador33">
+            <End Role="utilizador" EntitySet="utilizador" />
+            <End Role="movimento_estoque" EntitySet="movimento_estoque" />
+          </AssociationSet>
+          <AssociationSet Name="Refutilizador44" Association="Self.Refutilizador44">
+            <End Role="utilizador" EntitySet="utilizador" />
+            <End Role="reserva" EntitySet="reserva" />
+          </AssociationSet>
+          <AssociationSet Name="Refutilizador5" Association="Self.Refutilizador5">
+            <End Role="utilizador" EntitySet="utilizador" />
+            <End Role="logs" EntitySet="logs" />
+          </AssociationSet>
+          <AssociationSet Name="Refutilizador6" Association="Self.Refutilizador6">
+            <End Role="utilizador" EntitySet="utilizador" />
+            <End Role="caixa" EntitySet="caixa" />
+          </AssociationSet>
+          <AssociationSet Name="Refvenda16" Association="Self.Refvenda16">
+            <End Role="venda" EntitySet="venda" />
+            <End Role="venda_forma_pagamento" EntitySet="venda_forma_pagamento" />
+          </AssociationSet>
+          <AssociationSet Name="Refvenda22" Association="Self.Refvenda22">
+            <End Role="venda" EntitySet="venda" />
+            <End Role="item_venda" EntitySet="item_venda" />
+          </AssociationSet>
+          <AssociationSet Name="Refvenda48" Association="Self.Refvenda48">
+            <End Role="venda" EntitySet="venda" />
+            <End Role="venda_reserva" EntitySet="venda_reserva" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="db_hdata_pharmacyModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="apresentacao_produto">
+          <Key>
+            <PropertyRef Name="id_apresentacao_produto" />
+          </Key>
+          <Property Name="id_apresentacao_produto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="lotes" Relationship="Self.Refapresentacao_produto15" FromRole="apresentacao_produto" ToRole="lote" />
+        </EntityType>
+        <EntityType Name="caixa">
+          <Key>
+            <PropertyRef Name="id_caixa" />
+          </Key>
+          <Property Name="id_caixa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="data_criacao" Type="DateTime" Precision="6" Nullable="false" />
+          <Property Name="data_fecho" Type="DateTime" Precision="6" />
+          <Property Name="valor_inicial" Type="Single" Nullable="false" />
+          <Property Name="valor_actual" Type="Single" Nullable="false" />
+          <Property Name="id_user" Type="Int32" Nullable="false" />
+          <Property Name="saldo" Type="Single" />
+          <Property Name="estado_caixa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="vendas" Relationship="Self.Refcaixa38" FromRole="caixa" ToRole="venda" />
+          <NavigationProperty Name="movimento_caixa" Relationship="Self.Refcaixa7" FromRole="caixa" ToRole="movimento_caixa" />
+          <NavigationProperty Name="utilizador" Relationship="Self.Refutilizador6" FromRole="caixa" ToRole="utilizador" />
+        </EntityType>
+        <EntityType Name="categoria_produto">
+          <Key>
+            <PropertyRef Name="id_categoria" />
+          </Key>
+          <Property Name="id_categoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="designacao" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="notas" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="taxa_iva" Type="Single" />
+          <NavigationProperty Name="produtoes" Relationship="Self.Refcategoria_produto21" FromRole="categoria_produto" ToRole="produto" />
+        </EntityType>
+        <EntityType Name="cliente">
+          <Key>
+            <PropertyRef Name="id_cliente" />
+          </Key>
+          <Property Name="id_cliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="bi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="telefone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="endereco" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="data_cadastro" Type="DateTime" Precision="6" />
+          <NavigationProperty Name="vendas" Relationship="Self.Refcliente23" FromRole="cliente" ToRole="venda" />
+          <NavigationProperty Name="reservas" Relationship="Self.Refcliente42" FromRole="cliente" ToRole="reserva" />
+        </EntityType>
+        <EntityType Name="condicao_pagamento">
+          <Key>
+            <PropertyRef Name="id_condicao_pagamento" />
+          </Key>
+          <Property Name="id_condicao_pagamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="qtd_dia" Type="Int32" />
+          <NavigationProperty Name="vendas" Relationship="Self.Refcondicao_pagamento18" FromRole="condicao_pagamento" ToRole="venda" />
+        </EntityType>
+        <EntityType Name="custo">
+          <Key>
+            <PropertyRef Name="id_custo" />
+          </Key>
+          <Property Name="id_custo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="data_gasto" Type="DateTime" Precision="6" Nullable="false" />
+          <Property Name="valor" Type="Single" Nullable="false" />
+          <Property Name="razao" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="notas" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="id_tipo_custo" Type="Int32" Nullable="false" />
+          <Property Name="id_user" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tipo_custo" Relationship="Self.Reftipo_custo20" FromRole="custo" ToRole="tipo_custo" />
+          <NavigationProperty Name="utilizador" Relationship="Self.Refutilizador3" FromRole="custo" ToRole="utilizador" />
+        </EntityType>
+        <EntityType Name="elementos_promocao">
+          <Key>
+            <PropertyRef Name="id_promocao" />
+            <PropertyRef Name="id_lote" />
+            <PropertyRef Name="id_produto" />
+          </Key>
+          <Property Name="id_promocao" Type="Int32" Nullable="false" />
+          <Property Name="id_lote" Type="Int32" Nullable="false" />
+          <Property Name="id_produto" Type="Int32" Nullable="false" />
+          <Property Name="margem_venda" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="preco_venda" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="lote" Relationship="Self.Reflote37" FromRole="elementos_promocao" ToRole="lote" />
+          <NavigationProperty Name="promocao" Relationship="Self.Refpromocao36" FromRole="elementos_promocao" ToRole="promocao" />
+        </EntityType>
+        <EntityType Name="estoque_produto">
+          <Key>
+            <PropertyRef Name="id_local_estoque" />
+            <PropertyRef Name="id_lote" />
+            <PropertyRef Name="id_produto" />
+          </Key>
+          <Property Name="id_local_estoque" Type="Int32" Nullable="false" />
+          <Property Name="id_lote" Type="Int32" Nullable="false" />
+          <Property Name="id_produto" Type="Int32" Nullable="false" />
+          <Property Name="qtd_encomenda" Type="Int32" Nullable="false" />
+          <Property Name="qtd_existente" Type="Int32" />
+          <Property Name="qtd_minima" Type="Int32" Nullable="false" />
+          <Property Name="data_criacao" Type="DateTime" Precision="6" Nullable="false" />
+          <Property Name="preco_venda" Type="Single" Nullable="false" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="id_user" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="movimento_estoque" Relationship="Self.Refestoque_produto32" FromRole="estoque_produto" ToRole="movimento_estoque" />
+          <NavigationProperty Name="local_estoque" Relationship="Self.Reflocal_estoque13" FromRole="estoque_produto" ToRole="local_estoque" />
+          <NavigationProperty Name="lote" Relationship="Self.Reflote14" FromRole="estoque_produto" ToRole="lote" />
+          <NavigationProperty Name="utilizador" Relationship="Self.Refutilizador25" FromRole="estoque_produto" ToRole="utilizador" />
+        </EntityType>
+        <EntityType Name="forma_pagamento">
+          <Key>
+            <PropertyRef Name="id_forma_pagamento" />
+          </Key>
+          <Property Name="id_forma_pagamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="venda_forma_pagamento" Relationship="Self.Refforma_pagamento17" FromRole="forma_pagamento" ToRole="venda_forma_pagamento" />
+        </EntityType>
+        <EntityType Name="fornecedor">
+          <Key>
+            <PropertyRef Name="id_fornecedor" />
+          </Key>
+          <Property Name="id_fornecedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nif" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="endereco" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="telefone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="detalhe" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="data_cadastro" Type="DateTime" Precision="6" />
+          <NavigationProperty Name="lotes" Relationship="Self.Reffornecedor11" FromRole="fornecedor" ToRole="lote" />
+        </EntityType>
+        <EntityType Name="item_reserva">
+          <Key>
+            <PropertyRef Name="id_lote" />
+            <PropertyRef Name="id_produto" />
+            <PropertyRef Name="id_reserva" />
+          </Key>
+          <Property Name="id_lote" Type="Int32" Nullable="false" />
+          <Property Name="id_produto" Type="Int32" Nullable="false" />
+          <Property Name="id_reserva" Type="Int32" Nullable="false" />
+          <Property Name="quant_reservada_mensal" Type="Int32" Nullable="false" />
+          <Property Name="quant_levantada" Type="Int32" Nullable="false" />
+          <Property Name="unid_levantamento" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="lote" Relationship="Self.Reflote39" FromRole="item_reserva" ToRole="lote" />
+          <NavigationProperty Name="reserva" Relationship="Self.Refreserva40" FromRole="item_reserva" ToRole="reserva" />
+        </EntityType>
+        <EntityType Name="item_venda">
+          <Key>
+            <PropertyRef Name="id_venda" />
+            <PropertyRef Name="id_lote" />
+            <PropertyRef Name="id_produto" />
+          </Key>
+          <Property Name="id_venda" Type="Int32" Nullable="false" />
+          <Property Name="id_lote" Type="Int32" Nullable="false" />
+          <Property Name="id_produto" Type="Int32" Nullable="false" />
+          <Property Name="qtd" Type="Int32" Nullable="false" />
+          <Property Name="preco" Type="Single" Nullable="false" />
+          <Property Name="subtotal" Type="Single" Nullable="false" />
+          <NavigationProperty Name="lote" Relationship="Self.Reflote12" FromRole="item_venda" ToRole="lote" />
+          <NavigationProperty Name="venda" Relationship="Self.Refvenda22" FromRole="item_venda" ToRole="venda" />
+        </EntityType>
+        <EntityType Name="local_estoque">
+          <Key>
+            <PropertyRef Name="id_local_estoque" />
+          </Key>
+          <Property Name="id_local_estoque" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="estado_local_estoque" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="operacao" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="endereco" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="estoque_produto" Relationship="Self.Reflocal_estoque13" FromRole="local_estoque" ToRole="estoque_produto" />
+        </EntityType>
+        <EntityType Name="log">
+          <Key>
+            <PropertyRef Name="id_log" />
+          </Key>
+          <Property Name="id_log" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="titulo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="data_logs" Type="DateTime" Precision="6" Nullable="false" />
+          <Property Name="descricao" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="id_tipo_log" Type="Int32" Nullable="false" />
+          <Property Name="id_user" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tipo_log" Relationship="Self.Reftipo_log4" FromRole="logs" ToRole="tipo_log" />
+          <NavigationProperty Name="utilizador" Relationship="Self.Refutilizador5" FromRole="logs" ToRole="utilizador" />
+        </EntityType>
+        <EntityType Name="lote">
+          <Key>
+            <PropertyRef Name="id_lote" />
+            <PropertyRef Name="id_produto" />
+          </Key>
+          <Property Name="id_lote" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_produto" Type="Int32" Nullable="false" />
+          <Property Name="descricao" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="data_validade" Type="DateTime" Precision="6" Nullable="false" />
+          <Property Name="info_lote" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="codigo_barra" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="referencia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="margem_venda" Type="Single" />
+          <Property Name="preco_venda" Type="Single" />
+          <Property Name="data_cadastro" Type="DateTime" Precision="6" />
+          <Property Name="data_alteracao" Type="DateTime" Precision="6" Nullable="false" />
+          <Property Name="id_fornecedor" Type="Int32" Nullable="false" />
+          <Property Name="id_apresentacao_produto" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Int32" />
+          <NavigationProperty Name="apresentacao_produto" Relationship="Self.Refapresentacao_produto15" FromRole="lote" ToRole="apresentacao_produto" />
+          <NavigationProperty Name="elementos_promocao" Relationship="Self.Reflote37" FromRole="lote" ToRole="elementos_promocao" />
+          <NavigationProperty Name="estoque_produto" Relationship="Self.Reflote14" FromRole="lote" ToRole="estoque_produto" />
+          <NavigationProperty Name="fornecedor" Relationship="Self.Reffornecedor11" FromRole="lote" ToRole="fornecedor" />
+          <NavigationProperty Name="item_reserva" Relationship="Self.Reflote39" FromRole="lote" ToRole="item_reserva" />
+          <NavigationProperty Name="item_venda" Relationship="Self.Reflote12" FromRole="lote" ToRole="item_venda" />
+          <NavigationProperty Name="produto" Relationship="Self.Refproduto10" FromRole="lote" ToRole="produto" />
+        </EntityType>
+        <EntityType Name="movimento_caixa">
+          <Key>
+            <PropertyRef Name="id_movimento" />
+          </Key>
+          <Property Name="id_movimento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="notas" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="data_movimento" Type="DateTime" Precision="6" Nullable="false" />
+          <Property Name="valor_movimento" Type="Single" Nullable="false" />
+          <Property Name="id_caixa" Type="Int32" Nullable="false" />
+          <Property Name="id_tipo_movimento" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="caixa" Relationship="Self.Refcaixa7" FromRole="movimento_caixa" ToRole="caixa" />
+          <NavigationProperty Name="tipo_movimento" Relationship="Self.Reftipo_movimento8" FromRole="movimento_caixa" ToRole="tipo_movimento" />
+        </EntityType>
+        <EntityType Name="movimento_estoque">
+          <Key>
+            <PropertyRef Name="id_movimento_estoque" />
+          </Key>
+          <Property Name="id_movimento_estoque" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="data" Type="DateTime" Precision="6" />
+          <Property Name="data_compra" Type="DateTime" Precision="6" />
+          <Property Name="preco_compra" Type="Single" />
+          <Property Name="qtd" Type="Int32" />
+          <Property Name="descricao" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ajuste" Type="Int32" />
+          <Property Name="id_tipo_movimento" Type="Int32" Nullable="false" />
+          <Property Name="id_local_estoque" Type="Int32" Nullable="false" />
+          <Property Name="id_lote" Type="Int32" Nullable="false" />
+          <Property Name="id_produto" Type="Int32" Nullable="false" />
+          <Property Name="id_user" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="estoque_produto" Relationship="Self.Refestoque_produto32" FromRole="movimento_estoque" ToRole="estoque_produto" />
+          <NavigationProperty Name="tipo_movimento" Relationship="Self.Reftipo_movimento31" FromRole="movimento_estoque" ToRole="tipo_movimento" />
+          <NavigationProperty Name="utilizador" Relationship="Self.Refutilizador33" FromRole="movimento_estoque" ToRole="utilizador" />
+        </EntityType>
+        <EntityType Name="permissao">
+          <Key>
+            <PropertyRef Name="id_permissao" />
+          </Key>
+          <Property Name="id_permissao" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tipo_utilizador" Relationship="Self.permissao_tipo_utilizador" FromRole="permissao" ToRole="tipo_utilizador" />
+        </EntityType>
+        <EntityType Name="produto">
+          <Key>
+            <PropertyRef Name="id_produto" />
+          </Key>
+          <Property Name="id_produto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="codigo_barra" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="descricao" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="data_alteracao" Type="DateTime" Precision="6" Nullable="false" />
+          <Property Name="tipo_produto" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="id_categoria" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="id_tipo_unidade" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="categoria_produto" Relationship="Self.Refcategoria_produto21" FromRole="produto" ToRole="categoria_produto" />
+          <NavigationProperty Name="lotes" Relationship="Self.Refproduto10" FromRole="produto" ToRole="lote" />
+          <NavigationProperty Name="tipo_unidade" Relationship="Self.Reftipo_unidade50" FromRole="produto" ToRole="tipo_unidade" />
+        </EntityType>
+        <EntityType Name="promocao">
+          <Key>
+            <PropertyRef Name="id_promocao" />
+          </Key>
+          <Property Name="id_promocao" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="data_inicio" Type="DateTime" Precision="6" />
+          <Property Name="data_fim" Type="DateTime" Precision="6" />
+          <Property Name="nome" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="descricao" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="elementos_promocao" Relationship="Self.Refpromocao36" FromRole="promocao" ToRole="elementos_promocao" />
+        </EntityType>
+        <EntityType Name="reserva">
+          <Key>
+            <PropertyRef Name="id_reserva" />
+          </Key>
+          <Property Name="id_reserva" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_cliente" Type="Int32" Nullable="false" />
+          <Property Name="id_user" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+          <Property Name="data_inicio" Type="DateTime" Precision="0" />
+          <Property Name="data_fim" Type="DateTime" Precision="0" />
+          <Property Name="id_tipo_reserva" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="cliente" Relationship="Self.Refcliente42" FromRole="reserva" ToRole="cliente" />
+          <NavigationProperty Name="item_reserva" Relationship="Self.Refreserva40" FromRole="reserva" ToRole="item_reserva" />
+          <NavigationProperty Name="tipo_reserva" Relationship="Self.Reftipo_reserva49" FromRole="reserva" ToRole="tipo_reserva" />
+          <NavigationProperty Name="utilizador" Relationship="Self.Refutilizador44" FromRole="reserva" ToRole="utilizador" />
+          <NavigationProperty Name="vendas" Relationship="Self.venda_reserva" FromRole="reserva" ToRole="venda" />
+        </EntityType>
+        <EntityType Name="tipo_custo">
+          <Key>
+            <PropertyRef Name="id_tipo_custo" />
+          </Key>
+          <Property Name="id_tipo_custo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="custoes" Relationship="Self.Reftipo_custo20" FromRole="tipo_custo" ToRole="custo" />
+        </EntityType>
+        <EntityType Name="tipo_doc_venda">
+          <Key>
+            <PropertyRef Name="id_tipo_doc_venda" />
+          </Key>
+          <Property Name="id_tipo_doc_venda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="num_doc" Type="Int32" />
+          <Property Name="operacao" Type="Int32" />
+          <NavigationProperty Name="vendas" Relationship="Self.Reftipo_doc_venda9" FromRole="tipo_doc_venda" ToRole="venda" />
+        </EntityType>
+        <EntityType Name="tipo_log">
+          <Key>
+            <PropertyRef Name="id_tipo_log" />
+          </Key>
+          <Property Name="id_tipo_log" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="logs" Relationship="Self.Reftipo_log4" FromRole="tipo_log" ToRole="logs" />
+        </EntityType>
+        <EntityType Name="tipo_movimento">
+          <Key>
+            <PropertyRef Name="id_tipo_movimento" />
+          </Key>
+          <Property Name="id_tipo_movimento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="valor" Type="Int32" />
+          <NavigationProperty Name="movimento_caixa" Relationship="Self.Reftipo_movimento8" FromRole="tipo_movimento" ToRole="movimento_caixa" />
+          <NavigationProperty Name="movimento_estoque" Relationship="Self.Reftipo_movimento31" FromRole="tipo_movimento" ToRole="movimento_estoque" />
+        </EntityType>
+        <EntityType Name="tipo_reserva">
+          <Key>
+            <PropertyRef Name="id_tipo_reserva" />
+          </Key>
+          <Property Name="id_tipo_reserva" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="multiplicador" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="reservas" Relationship="Self.Reftipo_reserva49" FromRole="tipo_reserva" ToRole="reserva" />
+        </EntityType>
+        <EntityType Name="tipo_unidade">
+          <Key>
+            <PropertyRef Name="id_tipo_unidade" />
+          </Key>
+          <Property Name="id_tipo_unidade" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="abreviatura" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="produtoes" Relationship="Self.Reftipo_unidade50" FromRole="tipo_unidade" ToRole="produto" />
+        </EntityType>
+        <EntityType Name="tipo_utilizador">
+          <Key>
+            <PropertyRef Name="id_tipo_user" />
+          </Key>
+          <Property Name="id_tipo_user" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="notas" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="utilizadors" Relationship="Self.Reftipo_utilizador19" FromRole="tipo_utilizador" ToRole="utilizador" />
+          <NavigationProperty Name="permissaos" Relationship="Self.permissao_tipo_utilizador" FromRole="tipo_utilizador" ToRole="permissao" />
+        </EntityType>
+        <EntityType Name="utilizador">
+          <Key>
+            <PropertyRef Name="id_user" />
+          </Key>
+          <Property Name="id_user" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="username" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_tipo_user" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="caixas" Relationship="Self.Refutilizador6" FromRole="utilizador" ToRole="caixa" />
+          <NavigationProperty Name="custoes" Relationship="Self.Refutilizador3" FromRole="utilizador" ToRole="custo" />
+          <NavigationProperty Name="estoque_produto" Relationship="Self.Refutilizador25" FromRole="utilizador" ToRole="estoque_produto" />
+          <NavigationProperty Name="logs" Relationship="Self.Refutilizador5" FromRole="utilizador" ToRole="logs" />
+          <NavigationProperty Name="movimento_estoque" Relationship="Self.Refutilizador33" FromRole="utilizador" ToRole="movimento_estoque" />
+          <NavigationProperty Name="reservas" Relationship="Self.Refutilizador44" FromRole="utilizador" ToRole="reserva" />
+          <NavigationProperty Name="tipo_utilizador" Relationship="Self.Reftipo_utilizador19" FromRole="utilizador" ToRole="tipo_utilizador" />
+          <NavigationProperty Name="vendas" Relationship="Self.Refutilizador24" FromRole="utilizador" ToRole="venda" />
+        </EntityType>
+        <EntityType Name="venda">
+          <Key>
+            <PropertyRef Name="id_venda" />
+          </Key>
+          <Property Name="id_venda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="data_venda" Type="DateTime" Precision="6" Nullable="false" />
+          <Property Name="descricao" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="total_cobrar" Type="Single" Nullable="false" />
+          <Property Name="total_pago" Type="Single" Nullable="false" />
+          <Property Name="toco" Type="Single" Nullable="false" />
+          <Property Name="num_doc" Type="Int32" />
+          <Property Name="data_alteracao" Type="DateTime" Precision="6" Nullable="false" />
+          <Property Name="id_cliente" Type="Int32" Nullable="false" />
+          <Property Name="id_user" Type="Int32" Nullable="false" />
+          <Property Name="id_tipo_documento" Type="Int32" Nullable="false" />
+          <Property Name="notas" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="id_condicao_pagamento" Type="Int32" Nullable="false" />
+          <Property Name="id_caixa" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Int32" />
+          <NavigationProperty Name="caixa" Relationship="Self.Refcaixa38" FromRole="venda" ToRole="caixa" />
+          <NavigationProperty Name="cliente" Relationship="Self.Refcliente23" FromRole="venda" ToRole="cliente" />
+          <NavigationProperty Name="condicao_pagamento" Relationship="Self.Refcondicao_pagamento18" FromRole="venda" ToRole="condicao_pagamento" />
+          <NavigationProperty Name="item_venda" Relationship="Self.Refvenda22" FromRole="venda" ToRole="item_venda" />
+          <NavigationProperty Name="tipo_doc_venda" Relationship="Self.Reftipo_doc_venda9" FromRole="venda" ToRole="tipo_doc_venda" />
+          <NavigationProperty Name="utilizador" Relationship="Self.Refutilizador24" FromRole="venda" ToRole="utilizador" />
+          <NavigationProperty Name="venda_forma_pagamento" Relationship="Self.Refvenda16" FromRole="venda" ToRole="venda_forma_pagamento" />
+          <NavigationProperty Name="reservas" Relationship="Self.venda_reserva" FromRole="venda" ToRole="reserva" />
+        </EntityType>
+        <EntityType Name="venda_forma_pagamento">
+          <Key>
+            <PropertyRef Name="id_venda" />
+            <PropertyRef Name="id_forma_pagamento" />
+          </Key>
+          <Property Name="id_venda" Type="Int32" Nullable="false" />
+          <Property Name="id_forma_pagamento" Type="Int32" Nullable="false" />
+          <Property Name="valor_pago" Type="Single" />
+          <Property Name="referencia" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="forma_pagamento" Relationship="Self.Refforma_pagamento17" FromRole="venda_forma_pagamento" ToRole="forma_pagamento" />
+          <NavigationProperty Name="venda" Relationship="Self.Refvenda16" FromRole="venda_forma_pagamento" ToRole="venda" />
+        </EntityType>
+        <Association Name="Refapresentacao_produto15">
+          <End Role="apresentacao_produto" Type="Self.apresentacao_produto" Multiplicity="1" />
+          <End Role="lote" Type="Self.lote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="apresentacao_produto">
+              <PropertyRef Name="id_apresentacao_produto" />
+            </Principal>
+            <Dependent Role="lote">
+              <PropertyRef Name="id_apresentacao_produto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Refcaixa38">
+          <End Role="caixa" Type="Self.caixa" Multiplicity="1" />
+          <End Role="venda" Type="Self.venda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="caixa">
+              <PropertyRef Name="id_caixa" />
+            </Principal>
+            <Dependent Role="venda">
+              <PropertyRef Name="id_caixa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Refcaixa7">
+          <End Role="caixa" Type="Self.caixa" Multiplicity="1" />
+          <End Role="movimento_caixa" Type="Self.movimento_caixa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="caixa">
+              <PropertyRef Name="id_caixa" />
+            </Principal>
+            <Dependent Role="movimento_caixa">
+              <PropertyRef Name="id_caixa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Refutilizador6">
+          <End Role="utilizador" Type="Self.utilizador" Multiplicity="1" />
+          <End Role="caixa" Type="Self.caixa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utilizador">
+              <PropertyRef Name="id_user" />
+            </Principal>
+            <Dependent Role="caixa">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Refcategoria_produto21">
+          <End Role="categoria_produto" Type="Self.categoria_produto" Multiplicity="1" />
+          <End Role="produto" Type="Self.produto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categoria_produto">
+              <PropertyRef Name="id_categoria" />
+            </Principal>
+            <Dependent Role="produto">
+              <PropertyRef Name="id_categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Refcliente23">
+          <End Role="cliente" Type="Self.cliente" Multiplicity="1" />
+          <End Role="venda" Type="Self.venda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cliente">
+              <PropertyRef Name="id_cliente" />
+            </Principal>
+            <Dependent Role="venda">
+              <PropertyRef Name="id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Refcliente42">
+          <End Role="cliente" Type="Self.cliente" Multiplicity="1" />
+          <End Role="reserva" Type="Self.reserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cliente">
+              <PropertyRef Name="id_cliente" />
+            </Principal>
+            <Dependent Role="reserva">
+              <PropertyRef Name="id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Refcondicao_pagamento18">
+          <End Role="condicao_pagamento" Type="Self.condicao_pagamento" Multiplicity="1" />
+          <End Role="venda" Type="Self.venda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="condicao_pagamento">
+              <PropertyRef Name="id_condicao_pagamento" />
+            </Principal>
+            <Dependent Role="venda">
+              <PropertyRef Name="id_condicao_pagamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reftipo_custo20">
+          <End Role="tipo_custo" Type="Self.tipo_custo" Multiplicity="1" />
+          <End Role="custo" Type="Self.custo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_custo">
+              <PropertyRef Name="id_tipo_custo" />
+            </Principal>
+            <Dependent Role="custo">
+              <PropertyRef Name="id_tipo_custo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Refutilizador3">
+          <End Role="utilizador" Type="Self.utilizador" Multiplicity="1" />
+          <End Role="custo" Type="Self.custo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utilizador">
+              <PropertyRef Name="id_user" />
+            </Principal>
+            <Dependent Role="custo">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reflote37">
+          <End Role="lote" Type="Self.lote" Multiplicity="1" />
+          <End Role="elementos_promocao" Type="Self.elementos_promocao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lote">
+              <PropertyRef Name="id_lote" />
+              <PropertyRef Name="id_produto" />
+            </Principal>
+            <Dependent Role="elementos_promocao">
+              <PropertyRef Name="id_lote" />
+              <PropertyRef Name="id_produto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Refpromocao36">
+          <End Role="promocao" Type="Self.promocao" Multiplicity="1" />
+          <End Role="elementos_promocao" Type="Self.elementos_promocao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="promocao">
+              <PropertyRef Name="id_promocao" />
+            </Principal>
+            <Dependent Role="elementos_promocao">
+              <PropertyRef Name="id_promocao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Refestoque_produto32">
+          <End Role="estoque_produto" Type="Self.estoque_produto" Multiplicity="1" />
+          <End Role="movimento_estoque" Type="Self.movimento_estoque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estoque_produto">
+              <PropertyRef Name="id_local_estoque" />
+              <PropertyRef Name="id_lote" />
+              <PropertyRef Name="id_produto" />
+            </Principal>
+            <Dependent Role="movimento_estoque">
+              <PropertyRef Name="id_local_estoque" />
+              <PropertyRef Name="id_lote" />
+              <PropertyRef Name="id_produto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reflocal_estoque13">
+          <End Role="local_estoque" Type="Self.local_estoque" Multiplicity="1" />
+          <End Role="estoque_produto" Type="Self.estoque_produto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="local_estoque">
+              <PropertyRef Name="id_local_estoque" />
+            </Principal>
+            <Dependent Role="estoque_produto">
+              <PropertyRef Name="id_local_estoque" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reflote14">
+          <End Role="lote" Type="Self.lote" Multiplicity="1" />
+          <End Role="estoque_produto" Type="Self.estoque_produto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lote">
+              <PropertyRef Name="id_lote" />
+              <PropertyRef Name="id_produto" />
+            </Principal>
+            <Dependent Role="estoque_produto">
+              <PropertyRef Name="id_lote" />
+              <PropertyRef Name="id_produto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Refutilizador25">
+          <End Role="utilizador" Type="Self.utilizador" Multiplicity="1" />
+          <End Role="estoque_produto" Type="Self.estoque_produto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utilizador">
+              <PropertyRef Name="id_user" />
+            </Principal>
+            <Dependent Role="estoque_produto">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Refforma_pagamento17">
+          <End Role="forma_pagamento" Type="Self.forma_pagamento" Multiplicity="1" />
+          <End Role="venda_forma_pagamento" Type="Self.venda_forma_pagamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="forma_pagamento">
+              <PropertyRef Name="id_forma_pagamento" />
+            </Principal>
+            <Dependent Role="venda_forma_pagamento">
+              <PropertyRef Name="id_forma_pagamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reffornecedor11">
+          <End Role="fornecedor" Type="Self.fornecedor" Multiplicity="1" />
+          <End Role="lote" Type="Self.lote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fornecedor">
+              <PropertyRef Name="id_fornecedor" />
+            </Principal>
+            <Dependent Role="lote">
+              <PropertyRef Name="id_fornecedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reflote39">
+          <End Role="lote" Type="Self.lote" Multiplicity="1" />
+          <End Role="item_reserva" Type="Self.item_reserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lote">
+              <PropertyRef Name="id_lote" />
+              <PropertyRef Name="id_produto" />
+            </Principal>
+            <Dependent Role="item_reserva">
+              <PropertyRef Name="id_lote" />
+              <PropertyRef Name="id_produto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Refreserva40">
+          <End Role="reserva" Type="Self.reserva" Multiplicity="1" />
+          <End Role="item_reserva" Type="Self.item_reserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="reserva">
+              <PropertyRef Name="id_reserva" />
+            </Principal>
+            <Dependent Role="item_reserva">
+              <PropertyRef Name="id_reserva" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reflote12">
+          <End Role="lote" Type="Self.lote" Multiplicity="1" />
+          <End Role="item_venda" Type="Self.item_venda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lote">
+              <PropertyRef Name="id_lote" />
+              <PropertyRef Name="id_produto" />
+            </Principal>
+            <Dependent Role="item_venda">
+              <PropertyRef Name="id_lote" />
+              <PropertyRef Name="id_produto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Refvenda22">
+          <End Role="venda" Type="Self.venda" Multiplicity="1" />
+          <End Role="item_venda" Type="Self.item_venda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="venda">
+              <PropertyRef Name="id_venda" />
+            </Principal>
+            <Dependent Role="item_venda">
+              <PropertyRef Name="id_venda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reftipo_log4">
+          <End Role="tipo_log" Type="Self.tipo_log" Multiplicity="1" />
+          <End Role="logs" Type="Self.log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_log">
+              <PropertyRef Name="id_tipo_log" />
+            </Principal>
+            <Dependent Role="logs">
+              <PropertyRef Name="id_tipo_log" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Refutilizador5">
+          <End Role="utilizador" Type="Self.utilizador" Multiplicity="1" />
+          <End Role="logs" Type="Self.log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utilizador">
+              <PropertyRef Name="id_user" />
+            </Principal>
+            <Dependent Role="logs">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Refproduto10">
+          <End Role="produto" Type="Self.produto" Multiplicity="1" />
+          <End Role="lote" Type="Self.lote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="produto">
+              <PropertyRef Name="id_produto" />
+            </Principal>
+            <Dependent Role="lote">
+              <PropertyRef Name="id_produto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reftipo_movimento8">
+          <End Role="tipo_movimento" Type="Self.tipo_movimento" Multiplicity="1" />
+          <End Role="movimento_caixa" Type="Self.movimento_caixa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_movimento">
+              <PropertyRef Name="id_tipo_movimento" />
+            </Principal>
+            <Dependent Role="movimento_caixa">
+              <PropertyRef Name="id_tipo_movimento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reftipo_movimento31">
+          <End Role="tipo_movimento" Type="Self.tipo_movimento" Multiplicity="1" />
+          <End Role="movimento_estoque" Type="Self.movimento_estoque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_movimento">
+              <PropertyRef Name="id_tipo_movimento" />
+            </Principal>
+            <Dependent Role="movimento_estoque">
+              <PropertyRef Name="id_tipo_movimento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Refutilizador33">
+          <End Role="utilizador" Type="Self.utilizador" Multiplicity="1" />
+          <End Role="movimento_estoque" Type="Self.movimento_estoque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utilizador">
+              <PropertyRef Name="id_user" />
+            </Principal>
+            <Dependent Role="movimento_estoque">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reftipo_unidade50">
+          <End Role="tipo_unidade" Type="Self.tipo_unidade" Multiplicity="1" />
+          <End Role="produto" Type="Self.produto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_unidade">
+              <PropertyRef Name="id_tipo_unidade" />
+            </Principal>
+            <Dependent Role="produto">
+              <PropertyRef Name="id_tipo_unidade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reftipo_reserva49">
+          <End Role="tipo_reserva" Type="Self.tipo_reserva" Multiplicity="1" />
+          <End Role="reserva" Type="Self.reserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_reserva">
+              <PropertyRef Name="id_tipo_reserva" />
+            </Principal>
+            <Dependent Role="reserva">
+              <PropertyRef Name="id_tipo_reserva" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Refutilizador44">
+          <End Role="utilizador" Type="Self.utilizador" Multiplicity="1" />
+          <End Role="reserva" Type="Self.reserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utilizador">
+              <PropertyRef Name="id_user" />
+            </Principal>
+            <Dependent Role="reserva">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reftipo_doc_venda9">
+          <End Role="tipo_doc_venda" Type="Self.tipo_doc_venda" Multiplicity="1" />
+          <End Role="venda" Type="Self.venda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_doc_venda">
+              <PropertyRef Name="id_tipo_doc_venda" />
+            </Principal>
+            <Dependent Role="venda">
+              <PropertyRef Name="id_tipo_documento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reftipo_utilizador19">
+          <End Role="tipo_utilizador" Type="Self.tipo_utilizador" Multiplicity="1" />
+          <End Role="utilizador" Type="Self.utilizador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_utilizador">
+              <PropertyRef Name="id_tipo_user" />
+            </Principal>
+            <Dependent Role="utilizador">
+              <PropertyRef Name="id_tipo_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Refutilizador24">
+          <End Role="utilizador" Type="Self.utilizador" Multiplicity="1" />
+          <End Role="venda" Type="Self.venda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utilizador">
+              <PropertyRef Name="id_user" />
+            </Principal>
+            <Dependent Role="venda">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Refvenda16">
+          <End Role="venda" Type="Self.venda" Multiplicity="1" />
+          <End Role="venda_forma_pagamento" Type="Self.venda_forma_pagamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="venda">
+              <PropertyRef Name="id_venda" />
+            </Principal>
+            <Dependent Role="venda_forma_pagamento">
+              <PropertyRef Name="id_venda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="permissao_tipo_utilizador">
+          <End Role="permissao" Type="Self.permissao" Multiplicity="*" />
+          <End Role="tipo_utilizador" Type="Self.tipo_utilizador" Multiplicity="*" />
+        </Association>
+        <Association Name="venda_reserva">
+          <End Role="reserva" Type="Self.reserva" Multiplicity="*" />
+          <End Role="venda" Type="Self.venda" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="db_hdata_pharmacyEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="apresentacao_produto" EntityType="Self.apresentacao_produto" />
+          <EntitySet Name="caixas" EntityType="Self.caixa" />
+          <EntitySet Name="categoria_produto" EntityType="Self.categoria_produto" />
+          <EntitySet Name="clientes" EntityType="Self.cliente" />
+          <EntitySet Name="condicao_pagamento" EntityType="Self.condicao_pagamento" />
+          <EntitySet Name="custoes" EntityType="Self.custo" />
+          <EntitySet Name="elementos_promocao" EntityType="Self.elementos_promocao" />
+          <EntitySet Name="estoque_produto" EntityType="Self.estoque_produto" />
+          <EntitySet Name="forma_pagamento" EntityType="Self.forma_pagamento" />
+          <EntitySet Name="fornecedors" EntityType="Self.fornecedor" />
+          <EntitySet Name="item_reserva" EntityType="Self.item_reserva" />
+          <EntitySet Name="item_venda" EntityType="Self.item_venda" />
+          <EntitySet Name="local_estoque" EntityType="Self.local_estoque" />
+          <EntitySet Name="logs" EntityType="Self.log" />
+          <EntitySet Name="lotes" EntityType="Self.lote" />
+          <EntitySet Name="movimento_caixa" EntityType="Self.movimento_caixa" />
+          <EntitySet Name="movimento_estoque" EntityType="Self.movimento_estoque" />
+          <EntitySet Name="permissaos" EntityType="Self.permissao" />
+          <EntitySet Name="produtoes" EntityType="Self.produto" />
+          <EntitySet Name="promocaos" EntityType="Self.promocao" />
+          <EntitySet Name="reservas" EntityType="Self.reserva" />
+          <EntitySet Name="tipo_custo" EntityType="Self.tipo_custo" />
+          <EntitySet Name="tipo_doc_venda" EntityType="Self.tipo_doc_venda" />
+          <EntitySet Name="tipo_log" EntityType="Self.tipo_log" />
+          <EntitySet Name="tipo_movimento" EntityType="Self.tipo_movimento" />
+          <EntitySet Name="tipo_reserva" EntityType="Self.tipo_reserva" />
+          <EntitySet Name="tipo_unidade" EntityType="Self.tipo_unidade" />
+          <EntitySet Name="tipo_utilizador" EntityType="Self.tipo_utilizador" />
+          <EntitySet Name="utilizadors" EntityType="Self.utilizador" />
+          <EntitySet Name="vendas" EntityType="Self.venda" />
+          <EntitySet Name="venda_forma_pagamento" EntityType="Self.venda_forma_pagamento" />
+          <AssociationSet Name="Refapresentacao_produto15" Association="Self.Refapresentacao_produto15">
+            <End Role="apresentacao_produto" EntitySet="apresentacao_produto" />
+            <End Role="lote" EntitySet="lotes" />
+          </AssociationSet>
+          <AssociationSet Name="Refcaixa38" Association="Self.Refcaixa38">
+            <End Role="caixa" EntitySet="caixas" />
+            <End Role="venda" EntitySet="vendas" />
+          </AssociationSet>
+          <AssociationSet Name="Refcaixa7" Association="Self.Refcaixa7">
+            <End Role="caixa" EntitySet="caixas" />
+            <End Role="movimento_caixa" EntitySet="movimento_caixa" />
+          </AssociationSet>
+          <AssociationSet Name="Refutilizador6" Association="Self.Refutilizador6">
+            <End Role="utilizador" EntitySet="utilizadors" />
+            <End Role="caixa" EntitySet="caixas" />
+          </AssociationSet>
+          <AssociationSet Name="Refcategoria_produto21" Association="Self.Refcategoria_produto21">
+            <End Role="categoria_produto" EntitySet="categoria_produto" />
+            <End Role="produto" EntitySet="produtoes" />
+          </AssociationSet>
+          <AssociationSet Name="Refcliente23" Association="Self.Refcliente23">
+            <End Role="cliente" EntitySet="clientes" />
+            <End Role="venda" EntitySet="vendas" />
+          </AssociationSet>
+          <AssociationSet Name="Refcliente42" Association="Self.Refcliente42">
+            <End Role="cliente" EntitySet="clientes" />
+            <End Role="reserva" EntitySet="reservas" />
+          </AssociationSet>
+          <AssociationSet Name="Refcondicao_pagamento18" Association="Self.Refcondicao_pagamento18">
+            <End Role="condicao_pagamento" EntitySet="condicao_pagamento" />
+            <End Role="venda" EntitySet="vendas" />
+          </AssociationSet>
+          <AssociationSet Name="Reftipo_custo20" Association="Self.Reftipo_custo20">
+            <End Role="tipo_custo" EntitySet="tipo_custo" />
+            <End Role="custo" EntitySet="custoes" />
+          </AssociationSet>
+          <AssociationSet Name="Refutilizador3" Association="Self.Refutilizador3">
+            <End Role="utilizador" EntitySet="utilizadors" />
+            <End Role="custo" EntitySet="custoes" />
+          </AssociationSet>
+          <AssociationSet Name="Reflote37" Association="Self.Reflote37">
+            <End Role="lote" EntitySet="lotes" />
+            <End Role="elementos_promocao" EntitySet="elementos_promocao" />
+          </AssociationSet>
+          <AssociationSet Name="Refpromocao36" Association="Self.Refpromocao36">
+            <End Role="promocao" EntitySet="promocaos" />
+            <End Role="elementos_promocao" EntitySet="elementos_promocao" />
+          </AssociationSet>
+          <AssociationSet Name="Refestoque_produto32" Association="Self.Refestoque_produto32">
+            <End Role="estoque_produto" EntitySet="estoque_produto" />
+            <End Role="movimento_estoque" EntitySet="movimento_estoque" />
+          </AssociationSet>
+          <AssociationSet Name="Reflocal_estoque13" Association="Self.Reflocal_estoque13">
+            <End Role="local_estoque" EntitySet="local_estoque" />
+            <End Role="estoque_produto" EntitySet="estoque_produto" />
+          </AssociationSet>
+          <AssociationSet Name="Reflote14" Association="Self.Reflote14">
+            <End Role="lote" EntitySet="lotes" />
+            <End Role="estoque_produto" EntitySet="estoque_produto" />
+          </AssociationSet>
+          <AssociationSet Name="Refutilizador25" Association="Self.Refutilizador25">
+            <End Role="utilizador" EntitySet="utilizadors" />
+            <End Role="estoque_produto" EntitySet="estoque_produto" />
+          </AssociationSet>
+          <AssociationSet Name="Refforma_pagamento17" Association="Self.Refforma_pagamento17">
+            <End Role="forma_pagamento" EntitySet="forma_pagamento" />
+            <End Role="venda_forma_pagamento" EntitySet="venda_forma_pagamento" />
+          </AssociationSet>
+          <AssociationSet Name="Reffornecedor11" Association="Self.Reffornecedor11">
+            <End Role="fornecedor" EntitySet="fornecedors" />
+            <End Role="lote" EntitySet="lotes" />
+          </AssociationSet>
+          <AssociationSet Name="Reflote39" Association="Self.Reflote39">
+            <End Role="lote" EntitySet="lotes" />
+            <End Role="item_reserva" EntitySet="item_reserva" />
+          </AssociationSet>
+          <AssociationSet Name="Refreserva40" Association="Self.Refreserva40">
+            <End Role="reserva" EntitySet="reservas" />
+            <End Role="item_reserva" EntitySet="item_reserva" />
+          </AssociationSet>
+          <AssociationSet Name="Reflote12" Association="Self.Reflote12">
+            <End Role="lote" EntitySet="lotes" />
+            <End Role="item_venda" EntitySet="item_venda" />
+          </AssociationSet>
+          <AssociationSet Name="Refvenda22" Association="Self.Refvenda22">
+            <End Role="venda" EntitySet="vendas" />
+            <End Role="item_venda" EntitySet="item_venda" />
+          </AssociationSet>
+          <AssociationSet Name="Reftipo_log4" Association="Self.Reftipo_log4">
+            <End Role="tipo_log" EntitySet="tipo_log" />
+            <End Role="logs" EntitySet="logs" />
+          </AssociationSet>
+          <AssociationSet Name="Refutilizador5" Association="Self.Refutilizador5">
+            <End Role="utilizador" EntitySet="utilizadors" />
+            <End Role="logs" EntitySet="logs" />
+          </AssociationSet>
+          <AssociationSet Name="Refproduto10" Association="Self.Refproduto10">
+            <End Role="produto" EntitySet="produtoes" />
+            <End Role="lote" EntitySet="lotes" />
+          </AssociationSet>
+          <AssociationSet Name="Reftipo_movimento8" Association="Self.Reftipo_movimento8">
+            <End Role="tipo_movimento" EntitySet="tipo_movimento" />
+            <End Role="movimento_caixa" EntitySet="movimento_caixa" />
+          </AssociationSet>
+          <AssociationSet Name="Reftipo_movimento31" Association="Self.Reftipo_movimento31">
+            <End Role="tipo_movimento" EntitySet="tipo_movimento" />
+            <End Role="movimento_estoque" EntitySet="movimento_estoque" />
+          </AssociationSet>
+          <AssociationSet Name="Refutilizador33" Association="Self.Refutilizador33">
+            <End Role="utilizador" EntitySet="utilizadors" />
+            <End Role="movimento_estoque" EntitySet="movimento_estoque" />
+          </AssociationSet>
+          <AssociationSet Name="Reftipo_unidade50" Association="Self.Reftipo_unidade50">
+            <End Role="tipo_unidade" EntitySet="tipo_unidade" />
+            <End Role="produto" EntitySet="produtoes" />
+          </AssociationSet>
+          <AssociationSet Name="Reftipo_reserva49" Association="Self.Reftipo_reserva49">
+            <End Role="tipo_reserva" EntitySet="tipo_reserva" />
+            <End Role="reserva" EntitySet="reservas" />
+          </AssociationSet>
+          <AssociationSet Name="Refutilizador44" Association="Self.Refutilizador44">
+            <End Role="utilizador" EntitySet="utilizadors" />
+            <End Role="reserva" EntitySet="reservas" />
+          </AssociationSet>
+          <AssociationSet Name="Reftipo_doc_venda9" Association="Self.Reftipo_doc_venda9">
+            <End Role="tipo_doc_venda" EntitySet="tipo_doc_venda" />
+            <End Role="venda" EntitySet="vendas" />
+          </AssociationSet>
+          <AssociationSet Name="Reftipo_utilizador19" Association="Self.Reftipo_utilizador19">
+            <End Role="tipo_utilizador" EntitySet="tipo_utilizador" />
+            <End Role="utilizador" EntitySet="utilizadors" />
+          </AssociationSet>
+          <AssociationSet Name="Refutilizador24" Association="Self.Refutilizador24">
+            <End Role="utilizador" EntitySet="utilizadors" />
+            <End Role="venda" EntitySet="vendas" />
+          </AssociationSet>
+          <AssociationSet Name="Refvenda16" Association="Self.Refvenda16">
+            <End Role="venda" EntitySet="vendas" />
+            <End Role="venda_forma_pagamento" EntitySet="venda_forma_pagamento" />
+          </AssociationSet>
+          <AssociationSet Name="permissao_tipo_utilizador" Association="Self.permissao_tipo_utilizador">
+            <End Role="permissao" EntitySet="permissaos" />
+            <End Role="tipo_utilizador" EntitySet="tipo_utilizador" />
+          </AssociationSet>
+          <AssociationSet Name="venda_reserva" Association="Self.venda_reserva">
+            <End Role="reserva" EntitySet="reservas" />
+            <End Role="venda" EntitySet="vendas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="db_hdata_pharmacyModel1StoreContainer" CdmEntityContainer="db_hdata_pharmacyEntities">
+          <EntitySetMapping Name="apresentacao_produto">
+            <EntityTypeMapping TypeName="db_hdata_pharmacyModel1.apresentacao_produto">
+              <MappingFragment StoreEntitySet="apresentacao_produto">
+                <ScalarProperty Name="id_apresentacao_produto" ColumnName="id_apresentacao_produto" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="caixas">
+            <EntityTypeMapping TypeName="db_hdata_pharmacyModel1.caixa">
+              <MappingFragment StoreEntitySet="caixa">
+                <ScalarProperty Name="id_caixa" ColumnName="id_caixa" />
+                <ScalarProperty Name="data_criacao" ColumnName="data_criacao" />
+                <ScalarProperty Name="data_fecho" ColumnName="data_fecho" />
+                <ScalarProperty Name="valor_inicial" ColumnName="valor_inicial" />
+                <ScalarProperty Name="valor_actual" ColumnName="valor_actual" />
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+                <ScalarProperty Name="saldo" ColumnName="saldo" />
+                <ScalarProperty Name="estado_caixa" ColumnName="estado_caixa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="categoria_produto">
+            <EntityTypeMapping TypeName="db_hdata_pharmacyModel1.categoria_produto">
+              <MappingFragment StoreEntitySet="categoria_produto">
+                <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="designacao" ColumnName="designacao" />
+                <ScalarProperty Name="notas" ColumnName="notas" />
+                <ScalarProperty Name="taxa_iva" ColumnName="taxa_iva" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="clientes">
+            <EntityTypeMapping TypeName="db_hdata_pharmacyModel1.cliente">
+              <MappingFragment StoreEntitySet="cliente">
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="bi" ColumnName="bi" />
+                <ScalarProperty Name="telefone" ColumnName="telefone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="endereco" ColumnName="endereco" />
+                <ScalarProperty Name="data_cadastro" ColumnName="data_cadastro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="condicao_pagamento">
+            <EntityTypeMapping TypeName="db_hdata_pharmacyModel1.condicao_pagamento">
+              <MappingFragment StoreEntitySet="condicao_pagamento">
+                <ScalarProperty Name="id_condicao_pagamento" ColumnName="id_condicao_pagamento" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="qtd_dia" ColumnName="qtd_dia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="custoes">
+            <EntityTypeMapping TypeName="db_hdata_pharmacyModel1.custo">
+              <MappingFragment StoreEntitySet="custo">
+                <ScalarProperty Name="id_custo" ColumnName="id_custo" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="data_gasto" ColumnName="data_gasto" />
+                <ScalarProperty Name="valor" ColumnName="valor" />
+                <ScalarProperty Name="razao" ColumnName="razao" />
+                <ScalarProperty Name="notas" ColumnName="notas" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="id_tipo_custo" ColumnName="id_tipo_custo" />
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="elementos_promocao">
+            <EntityTypeMapping TypeName="db_hdata_pharmacyModel1.elementos_promocao">
+              <MappingFragment StoreEntitySet="elementos_promocao">
+                <ScalarProperty Name="id_promocao" ColumnName="id_promocao" />
+                <ScalarProperty Name="id_lote" ColumnName="id_lote" />
+                <ScalarProperty Name="id_produto" ColumnName="id_produto" />
+                <ScalarProperty Name="margem_venda" ColumnName="margem_venda" />
+                <ScalarProperty Name="preco_venda" ColumnName="preco_venda" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="estoque_produto">
+            <EntityTypeMapping TypeName="db_hdata_pharmacyModel1.estoque_produto">
+              <MappingFragment StoreEntitySet="estoque_produto">
+                <ScalarProperty Name="id_local_estoque" ColumnName="id_local_estoque" />
+                <ScalarProperty Name="id_lote" ColumnName="id_lote" />
+                <ScalarProperty Name="id_produto" ColumnName="id_produto" />
+                <ScalarProperty Name="qtd_encomenda" ColumnName="qtd_encomenda" />
+                <ScalarProperty Name="qtd_existente" ColumnName="qtd_existente" />
+                <ScalarProperty Name="qtd_minima" ColumnName="qtd_minima" />
+                <ScalarProperty Name="data_criacao" ColumnName="data_criacao" />
+                <ScalarProperty Name="preco_venda" ColumnName="preco_venda" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="forma_pagamento">
+            <EntityTypeMapping TypeName="db_hdata_pharmacyModel1.forma_pagamento">
+              <MappingFragment StoreEntitySet="forma_pagamento">
+                <ScalarProperty Name="id_forma_pagamento" ColumnName="id_forma_pagamento" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="fornecedors">
+            <EntityTypeMapping TypeName="db_hdata_pharmacyModel1.fornecedor">
+              <MappingFragment StoreEntitySet="fornecedor">
+                <ScalarProperty Name="id_fornecedor" ColumnName="id_fornecedor" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="nif" ColumnName="nif" />
+                <ScalarProperty Name="endereco" ColumnName="endereco" />
+                <ScalarProperty Name="telefone" ColumnName="telefone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="detalhe" ColumnName="detalhe" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="data_cadastro" ColumnName="data_cadastro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="item_reserva">
+            <EntityTypeMapping TypeName="db_hdata_pharmacyModel1.item_reserva">
+              <MappingFragment StoreEntitySet="item_reserva">
+                <ScalarProperty Name="id_lote" ColumnName="id_lote" />
+                <ScalarProperty Name="id_produto" ColumnName="id_produto" />
+                <ScalarProperty Name="id_reserva" ColumnName="id_reserva" />
+                <ScalarProperty Name="quant_reservada_mensal" ColumnName="quant_reservada_mensal" />
+                <ScalarProperty Name="quant_levantada" ColumnName="quant_levantada" />
+                <ScalarProperty Name="unid_levantamento" ColumnName="unid_levantamento" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="item_venda">
+            <EntityTypeMapping TypeName="db_hdata_pharmacyModel1.item_venda">
+              <MappingFragment StoreEntitySet="item_venda">
+                <ScalarProperty Name="id_venda" ColumnName="id_venda" />
+                <ScalarProperty Name="id_lote" ColumnName="id_lote" />
+                <ScalarProperty Name="id_produto" ColumnName="id_produto" />
+                <ScalarProperty Name="qtd" ColumnName="qtd" />
+                <ScalarProperty Name="preco" ColumnName="preco" />
+                <ScalarProperty Name="subtotal" ColumnName="subtotal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="local_estoque">
+            <EntityTypeMapping TypeName="db_hdata_pharmacyModel1.local_estoque">
+              <MappingFragment StoreEntitySet="local_estoque">
+                <ScalarProperty Name="id_local_estoque" ColumnName="id_local_estoque" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="estado_local_estoque" ColumnName="estado_local_estoque" />
+                <ScalarProperty Name="operacao" ColumnName="operacao" />
+                <ScalarProperty Name="endereco" ColumnName="endereco" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="logs">
+            <EntityTypeMapping TypeName="db_hdata_pharmacyModel1.log">
+              <MappingFragment StoreEntitySet="logs">
+                <ScalarProperty Name="id_log" ColumnName="id_log" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="data_logs" ColumnName="data_logs" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="id_tipo_log" ColumnName="id_tipo_log" />
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lotes">
+            <EntityTypeMapping TypeName="db_hdata_pharmacyModel1.lote">
+              <MappingFragment StoreEntitySet="lote">
+                <ScalarProperty Name="id_lote" ColumnName="id_lote" />
+                <ScalarProperty Name="id_produto" ColumnName="id_produto" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="data_validade" ColumnName="data_validade" />
+                <ScalarProperty Name="info_lote" ColumnName="info_lote" />
+                <ScalarProperty Name="codigo_barra" ColumnName="codigo_barra" />
+                <ScalarProperty Name="referencia" ColumnName="referencia" />
+                <ScalarProperty Name="margem_venda" ColumnName="margem_venda" />
+                <ScalarProperty Name="preco_venda" ColumnName="preco_venda" />
+                <ScalarProperty Name="data_cadastro" ColumnName="data_cadastro" />
+                <ScalarProperty Name="data_alteracao" ColumnName="data_alteracao" />
+                <ScalarProperty Name="id_fornecedor" ColumnName="id_fornecedor" />
+                <ScalarProperty Name="id_apresentacao_produto" ColumnName="id_apresentacao_produto" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="movimento_caixa">
+            <EntityTypeMapping TypeName="db_hdata_pharmacyModel1.movimento_caixa">
+              <MappingFragment StoreEntitySet="movimento_caixa">
+                <ScalarProperty Name="id_movimento" ColumnName="id_movimento" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="notas" ColumnName="notas" />
+                <ScalarProperty Name="data_movimento" ColumnName="data_movimento" />
+                <ScalarProperty Name="valor_movimento" ColumnName="valor_movimento" />
+                <ScalarProperty Name="id_caixa" ColumnName="id_caixa" />
+                <ScalarProperty Name="id_tipo_movimento" ColumnName="id_tipo_movimento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="movimento_estoque">
+            <EntityTypeMapping TypeName="db_hdata_pharmacyModel1.movimento_estoque">
+              <MappingFragment StoreEntitySet="movimento_estoque">
+                <ScalarProperty Name="id_movimento_estoque" ColumnName="id_movimento_estoque" />
+                <ScalarProperty Name="data" ColumnName="data" />
+                <ScalarProperty Name="data_compra" ColumnName="data_compra" />
+                <ScalarProperty Name="preco_compra" ColumnName="preco_compra" />
+                <ScalarProperty Name="qtd" ColumnName="qtd" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="ajuste" ColumnName="ajuste" />
+                <ScalarProperty Name="id_tipo_movimento" ColumnName="id_tipo_movimento" />
+                <ScalarProperty Name="id_local_estoque" ColumnName="id_local_estoque" />
+                <ScalarProperty Name="id_lote" ColumnName="id_lote" />
+                <ScalarProperty Name="id_produto" ColumnName="id_produto" />
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="permissaos">
+            <EntityTypeMapping TypeName="db_hdata_pharmacyModel1.permissao">
+              <MappingFragment StoreEntitySet="permissao">
+                <ScalarProperty Name="id_permissao" ColumnName="id_permissao" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="produtoes">
+            <EntityTypeMapping TypeName="db_hdata_pharmacyModel1.produto">
+              <MappingFragment StoreEntitySet="produto">
+                <ScalarProperty Name="id_produto" ColumnName="id_produto" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="codigo_barra" ColumnName="codigo_barra" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="data_alteracao" ColumnName="data_alteracao" />
+                <ScalarProperty Name="tipo_produto" ColumnName="tipo_produto" />
+                <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="id_tipo_unidade" ColumnName="id_tipo_unidade" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="promocaos">
+            <EntityTypeMapping TypeName="db_hdata_pharmacyModel1.promocao">
+              <MappingFragment StoreEntitySet="promocao">
+                <ScalarProperty Name="id_promocao" ColumnName="id_promocao" />
+                <ScalarProperty Name="data_inicio" ColumnName="data_inicio" />
+                <ScalarProperty Name="data_fim" ColumnName="data_fim" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="reservas">
+            <EntityTypeMapping TypeName="db_hdata_pharmacyModel1.reserva">
+              <MappingFragment StoreEntitySet="reserva">
+                <ScalarProperty Name="id_reserva" ColumnName="id_reserva" />
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="data_inicio" ColumnName="data_inicio" />
+                <ScalarProperty Name="data_fim" ColumnName="data_fim" />
+                <ScalarProperty Name="id_tipo_reserva" ColumnName="id_tipo_reserva" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipo_custo">
+            <EntityTypeMapping TypeName="db_hdata_pharmacyModel1.tipo_custo">
+              <MappingFragment StoreEntitySet="tipo_custo">
+                <ScalarProperty Name="id_tipo_custo" ColumnName="id_tipo_custo" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipo_doc_venda">
+            <EntityTypeMapping TypeName="db_hdata_pharmacyModel1.tipo_doc_venda">
+              <MappingFragment StoreEntitySet="tipo_doc_venda">
+                <ScalarProperty Name="id_tipo_doc_venda" ColumnName="id_tipo_doc_venda" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="num_doc" ColumnName="num_doc" />
+                <ScalarProperty Name="operacao" ColumnName="operacao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipo_log">
+            <EntityTypeMapping TypeName="db_hdata_pharmacyModel1.tipo_log">
+              <MappingFragment StoreEntitySet="tipo_log">
+                <ScalarProperty Name="id_tipo_log" ColumnName="id_tipo_log" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipo_movimento">
+            <EntityTypeMapping TypeName="db_hdata_pharmacyModel1.tipo_movimento">
+              <MappingFragment StoreEntitySet="tipo_movimento">
+                <ScalarProperty Name="id_tipo_movimento" ColumnName="id_tipo_movimento" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="valor" ColumnName="valor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipo_reserva">
+            <EntityTypeMapping TypeName="db_hdata_pharmacyModel1.tipo_reserva">
+              <MappingFragment StoreEntitySet="tipo_reserva">
+                <ScalarProperty Name="id_tipo_reserva" ColumnName="id_tipo_reserva" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="multiplicador" ColumnName="multiplicador" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipo_unidade">
+            <EntityTypeMapping TypeName="db_hdata_pharmacyModel1.tipo_unidade">
+              <MappingFragment StoreEntitySet="tipo_unidade">
+                <ScalarProperty Name="id_tipo_unidade" ColumnName="id_tipo_unidade" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="abreviatura" ColumnName="abreviatura" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipo_utilizador">
+            <EntityTypeMapping TypeName="db_hdata_pharmacyModel1.tipo_utilizador">
+              <MappingFragment StoreEntitySet="tipo_utilizador">
+                <ScalarProperty Name="id_tipo_user" ColumnName="id_tipo_user" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="notas" ColumnName="notas" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="utilizadors">
+            <EntityTypeMapping TypeName="db_hdata_pharmacyModel1.utilizador">
+              <MappingFragment StoreEntitySet="utilizador">
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="id_tipo_user" ColumnName="id_tipo_user" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vendas">
+            <EntityTypeMapping TypeName="db_hdata_pharmacyModel1.venda">
+              <MappingFragment StoreEntitySet="venda">
+                <ScalarProperty Name="id_venda" ColumnName="id_venda" />
+                <ScalarProperty Name="data_venda" ColumnName="data_venda" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="total_cobrar" ColumnName="total_cobrar" />
+                <ScalarProperty Name="total_pago" ColumnName="total_pago" />
+                <ScalarProperty Name="toco" ColumnName="toco" />
+                <ScalarProperty Name="num_doc" ColumnName="num_doc" />
+                <ScalarProperty Name="data_alteracao" ColumnName="data_alteracao" />
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+                <ScalarProperty Name="id_tipo_documento" ColumnName="id_tipo_documento" />
+                <ScalarProperty Name="notas" ColumnName="notas" />
+                <ScalarProperty Name="id_condicao_pagamento" ColumnName="id_condicao_pagamento" />
+                <ScalarProperty Name="id_caixa" ColumnName="id_caixa" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="venda_forma_pagamento">
+            <EntityTypeMapping TypeName="db_hdata_pharmacyModel1.venda_forma_pagamento">
+              <MappingFragment StoreEntitySet="venda_forma_pagamento">
+                <ScalarProperty Name="id_venda" ColumnName="id_venda" />
+                <ScalarProperty Name="id_forma_pagamento" ColumnName="id_forma_pagamento" />
+                <ScalarProperty Name="valor_pago" ColumnName="valor_pago" />
+                <ScalarProperty Name="referencia" ColumnName="referencia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="permissao_tipo_utilizador" TypeName="db_hdata_pharmacyModel1.permissao_tipo_utilizador" StoreEntitySet="permissao tipo_utilizador">
+            <EndProperty Name="permissao">
+              <ScalarProperty Name="id_permissao" ColumnName="id_permissao" />
+            </EndProperty>
+            <EndProperty Name="tipo_utilizador">
+              <ScalarProperty Name="id_tipo_user" ColumnName="id_tipo_user" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="venda_reserva" TypeName="db_hdata_pharmacyModel1.venda_reserva" StoreEntitySet="venda_reserva">
+            <EndProperty Name="reserva">
+              <ScalarProperty Name="id_reserva" ColumnName="id_reserva" />
+            </EndProperty>
+            <EndProperty Name="venda">
+              <ScalarProperty Name="id_venda" ColumnName="id_venda" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

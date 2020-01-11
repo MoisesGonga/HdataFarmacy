@@ -1,0 +1,191 @@
+﻿<UserControl x:Class="HDATA_PHARMACY.Views.Estoque.EstoqueAdicionar_UC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HDATA_PHARMACY.Views.Estoque"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"   
+            xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+               xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+             
+               xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/charts" xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+              xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" 
+             
+             
+              TextElement.FontFamily="{DynamicResource PoppinsRegular}"      
+            TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+            TextElement.FontWeight="Regular"
+            TextElement.FontSize="13"
+            TextOptions.TextFormattingMode="Ideal"
+            TextOptions.TextRenderingMode="Auto"
+             Background="{DynamicResource DefaultBackground}" 
+          FontFamily="Poppins" d:DesignHeight="767.2" d:DesignWidth="728.038">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="773*"/>
+           
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="196"/>
+            <RowDefinition Height="143"/>
+            <RowDefinition Height="225"/>
+        </Grid.RowDefinitions>
+        <TextBlock  FontFamily="Poppins" Foreground="White" FontSize="{DynamicResource FontSizeLarge}" Margin="10,0,0,9" Grid.ColumnSpan="2"><Run Foreground="#FF4D4F5C" Text="ESTOQUE"/><Run Foreground="#FF4D4F5C" Text="&gt; ADICIONAR"/></TextBlock>
+
+       
+        <StackPanel HorizontalAlignment="Right"  Margin="0,0,30,0"  VerticalAlignment="Top"  Orientation="Horizontal" Height="50" Grid.Column="1"  >
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" >
+                <Button FontFamily="Poppins" Content="Cancelar" Width="100" Background="{StaticResource DangerColor}" BorderThickness="0" Foreground="White"  Margin="0 0 20 0"></Button>
+                <Button FontFamily="Poppins" Content="Salvar" Width="100" Background="{StaticResource SucessColor}" BorderThickness="0" Foreground="White" Margin="0 0 20 0" Click="Button_Click"></Button>
+                <Button FontFamily="Poppins" Content="Novo" Width="100" Background="{StaticResource  BlueColor}" BorderThickness="0" Foreground="White"></Button>
+            </StackPanel>
+        </StackPanel>
+
+
+
+
+        <StackPanel HorizontalAlignment="Left"  Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Top"  Orientation="Vertical" Height="671" Grid.RowSpan="3" Width="620"  >
+
+
+            <StackPanel HorizontalAlignment="Left"  Margin="0,5,0,5"  VerticalAlignment="Top"  Orientation="Horizontal" Height="50"  >
+                <StackPanel HorizontalAlignment="Left"  Height="36"   Margin="10,0,0,0"  VerticalAlignment="Bottom" Width="207">
+                    <Label x:Name="label111" Content="Produto" FontSize="{DynamicResource FontSizeNormal}" Margin="0,0,33,0" />
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Height="50"   Margin="10,0,0,0" VerticalAlignment="Top" Width="400">
+
+                    <TextBox  x:Name="TxtInfoLote" materialDesign:HintAssist.Hint="Ex: 6000"
+                     materialDesign:TransitionAssist.DisableTransitions="True" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                     FontFamily="Poppins" Height="48" Margin="0,1" Width="313" />
+                    <Button x:Name="btn_Produto" FontFamily="Poppins" Width="59" Background="{StaticResource SucessColor}" BorderThickness="0" Foreground="White" Margin="10,9,10,0" Click="btn_Produto_Click" Height="32" VerticalAlignment="Top">
+                        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Magnify" Width="31" Height="25" HorizontalAlignment="Center"></materialDesign:PackIcon>
+
+                        </StackPanel>
+                    </Button>
+
+
+                </StackPanel>
+
+            </StackPanel>
+
+           
+
+
+            <!--elementos da Data-->
+
+
+            <!--elementos da Data-->
+
+            <!--elementos da Data-->
+
+
+            <!--elementos da Data-->
+
+            <!--elementos da Data-->
+            <StackPanel HorizontalAlignment="Left"  Margin="0,5,0,5"  VerticalAlignment="Top"  Orientation="Horizontal" Height="50"  >
+                <StackPanel HorizontalAlignment="Left"  Height="36"   Margin="10,0,0,0"  VerticalAlignment="Bottom" Width="200">
+                    <Label x:Name="labelc1111" Content="Qtd Actual" FontSize="{DynamicResource FontSizeNormal}" />
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left"  Height="50"   Margin="10,0,0,0" Grid.Row="1" Grid.RowSpan="1" VerticalAlignment="Top" Width="400">
+
+                    <TextBox  x:Name="TxtQtdActal" materialDesign:HintAssist.Hint="Ex: 6000"
+                     materialDesign:TransitionAssist.DisableTransitions="True" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                     FontFamily="Poppins" Height="48" />
+
+                </StackPanel>
+            </StackPanel>
+
+            <!--elementos da Data-->
+            <StackPanel HorizontalAlignment="Left"  Margin="0,5,0,5"  VerticalAlignment="Top"  Orientation="Horizontal" Height="50"  >
+                <StackPanel HorizontalAlignment="Left"  Height="36"   Margin="10,0,0,0"  VerticalAlignment="Bottom" Width="200">
+                    <Label x:Name="labelc11111" Content="Qtd Mínima" FontSize="{DynamicResource FontSizeNormal}" />
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left"  Height="50"   Margin="10,0,0,0" Grid.Row="1" Grid.RowSpan="1" VerticalAlignment="Top" Width="400">
+
+                    <TextBox  x:Name="TxtQtdMinima" materialDesign:HintAssist.Hint="Ex: 6000"
+                     materialDesign:TransitionAssist.DisableTransitions="True" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                     FontFamily="Poppins" Height="48" />
+
+                </StackPanel>
+            </StackPanel>
+
+              <!--elementos da Razão-->
+
+
+            <!--elementos da Data-->
+            <StackPanel HorizontalAlignment="Left"  Margin="0,5,0,5"  VerticalAlignment="Top"  Orientation="Horizontal" Height="50"  >
+                <StackPanel HorizontalAlignment="Left"  Height="36"   Margin="10,0,0,0"  VerticalAlignment="Bottom" Width="200">
+                    <Label x:Name="labelcd11dddd11" Content="Qtd Encomendada" FontSize="{DynamicResource FontSizeNormal}" />
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left"  Height="50"   Margin="10,0,0,0" Grid.Row="1" Grid.RowSpan="1" VerticalAlignment="Top" Width="400">
+
+                    <TextBox  x:Name="TxtQtdMaxima" materialDesign:HintAssist.Hint="Ex: 6000"
+                     materialDesign:TransitionAssist.DisableTransitions="True" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                     FontFamily="Poppins" Height="48" />
+
+                </StackPanel>
+            </StackPanel>
+
+
+            <!--elementos da Razão-->
+            <StackPanel HorizontalAlignment="Left"  Margin="0,5,0,5"  VerticalAlignment="Top"  Orientation="Horizontal" Height="50"  >
+                <StackPanel HorizontalAlignment="Left"  Height="36"   Margin="10,0,0,0"  VerticalAlignment="Bottom" Width="200">
+                    <Label x:Name="label1dfsd67s11" Content="Local Estoque" FontSize="{DynamicResource FontSizeNormal}" Margin="0,0,34,0" />
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Height="50"   Margin="10,0,0,0" Grid.Row="1" Grid.RowSpan="1" VerticalAlignment="Top" Width="400">
+
+                    <ComboBox x:Name="Cmb_LocalEstoque" VerticalAlignment="Stretch" Height="48" materialDesign:HintAssist.Hint="EX: Nome da empresa fornecesora" Margin="0,1" Width="329"/>
+                    <Button x:Name="btn_Fornecedor" FontFamily="Poppins" Width="59" Background="{StaticResource SucessColor}" BorderThickness="0" Foreground="White" Margin="10,9,10,0" Click="btn_Fornecedor_Click" Height="32" VerticalAlignment="Top">
+                        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                            <materialDesign:PackIcon
+                				Width="20"
+                				Height="18"
+                				Margin="0 0 5 0"
+                				VerticalAlignment="Center"
+                				Foreground="White"
+                				Kind="add" />
+
+                        </StackPanel>
+                    </Button>
+
+
+                </StackPanel>
+            </StackPanel>
+
+
+            <!--elementos da Data-->
+            <StackPanel HorizontalAlignment="Left"  Margin="0,5,0,5"  VerticalAlignment="Top"  Orientation="Horizontal" Height="50"  >
+                <StackPanel HorizontalAlignment="Left"  Height="36"   Margin="10,0,0,0"  VerticalAlignment="Bottom" Width="200">
+                    <Label x:Name="labelc1d1111" Content="Data Compra" FontSize="{DynamicResource FontSizeNormal}" />
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left"  Height="50"   Margin="10,0,0,0" Grid.Row="1" Grid.RowSpan="1" VerticalAlignment="Top" Width="400">
+
+                    <DatePicker ToolTip="Data da venda"
+                                x:Name="data_compra"                          
+                                HorizontalAlignment="Center"
+                                FontSize="14"
+                                Language="PT-pt"
+                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Height="39" Width="135" Margin="0,0,265,0"   />
+
+                </StackPanel>
+            </StackPanel>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </StackPanel>
+       
+    </Grid>
+</UserControl>

@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9A998CFB-24CB-4AF9-9637-B763C89B9BAC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DTO</RootNamespace>
+    <AssemblyName>DTO</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework6.Npgsql, Version=3.1.1.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework6.Npgsql.3.1.1\lib\net45\EntityFramework6.Npgsql.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Npgsql, Version=3.1.8.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Npgsql.3.1.8\lib\net451\Npgsql.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.0\lib\netstandard1.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.3.0\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="apresentacao_produto.cs">
+      <DependentUpon>HDATA_PHARMACY_MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="caixa.cs">
+      <DependentUpon>HDATA_PHARMACY_MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="categoria_produto.cs">
+      <DependentUpon>HDATA_PHARMACY_MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cliente.cs">
+      <DependentUpon>HDATA_PHARMACY_MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="condicao_pagamento.cs">
+      <DependentUpon>HDATA_PHARMACY_MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="custo.cs">
+      <DependentUpon>HDATA_PHARMACY_MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="disciplina_estoque.cs">
+      <DependentUpon>HDATA_PHARMACY_MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="elementos_promocao.cs">
+      <DependentUpon>HDATA_PHARMACY_MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="estoque_produto.cs">
+      <DependentUpon>HDATA_PHARMACY_MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="forma_pagamento.cs">
+      <DependentUpon>HDATA_PHARMACY_MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="fornecedor.cs">
+      <DependentUpon>HDATA_PHARMACY_MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HDATA_PHARMACY_MODEL.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HDATA_PHARMACY_MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="item_reserva.cs">
+      <DependentUpon>HDATA_PHARMACY_MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="item_venda.cs">
+      <DependentUpon>HDATA_PHARMACY_MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="local_estoque.cs">
+      <DependentUpon>HDATA_PHARMACY_MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="log.cs">
+      <DependentUpon>HDATA_PHARMACY_MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="lote.cs">
+      <DependentUpon>HDATA_PHARMACY_MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ProdutoItemVenda.cs" />
+    <Compile Include="movimento_caixa.cs">
+      <DependentUpon>HDATA_PHARMACY_MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="movimento_estoque.cs">
+      <DependentUpon>HDATA_PHARMACY_MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="permissao.cs">
+      <DependentUpon>HDATA_PHARMACY_MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="produto.cs">
+      <DependentUpon>HDATA_PHARMACY_MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="promocao.cs">
+      <DependentUpon>HDATA_PHARMACY_MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="reserva.cs">
+      <DependentUpon>HDATA_PHARMACY_MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tipo_custo.cs">
+      <DependentUpon>HDATA_PHARMACY_MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tipo_doc_venda.cs">
+      <DependentUpon>HDATA_PHARMACY_MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tipo_log.cs">
+      <DependentUpon>HDATA_PHARMACY_MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tipo_movimento.cs">
+      <DependentUpon>HDATA_PHARMACY_MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tipo_produto.cs">
+      <DependentUpon>HDATA_PHARMACY_MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tipo_reserva.cs">
+      <DependentUpon>HDATA_PHARMACY_MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tipo_unidade.cs">
+      <DependentUpon>HDATA_PHARMACY_MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tipo_utilizador.cs">
+      <DependentUpon>HDATA_PHARMACY_MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="utilizador.cs">
+      <DependentUpon>HDATA_PHARMACY_MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="venda.cs">
+      <DependentUpon>HDATA_PHARMACY_MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="venda_forma_pagamento.cs">
+      <DependentUpon>HDATA_PHARMACY_MODEL.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="ClassDiagram1.cd" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="HDATA_PHARMACY_MODEL.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>HDATA_PHARMACY_MODEL.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
